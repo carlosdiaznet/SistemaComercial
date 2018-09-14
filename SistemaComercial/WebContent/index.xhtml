@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Demo de actualizacion de listas con ajax</title>
+<h:outputStylesheet library="css" name="estilos.css" />
+</h:head>
+<h:body>
+	<h:form>
+		<p:growl id="msgs" showDetail="true" />
+		<p:panel header="Seleccione una localidad" style="margin-bottom:10px;">
+			<h:panelGrid columns="2" cellpadding="5">
+				<p:outputLabel for="pais" value="Pais: " />
+				<p:selectOneMenu id="pais" style="width:150px;" value="#{listas.pais}">
+						<p:ajax listener="#{listas.onPaisChange}" />
+						<f:selectItem itemLabel="Seleccione el pais" itemDescription="" noSelectionOption="true" />
+						<f:selectItems value="#{listas.paises}" />
+				</p:selectOneMenu>
+				
+				<p:outputLabel for="ciudad" value="Ciudad: " />
+				<p:selectOneMenu id="ciudad" value="#{listas.ciudad}" style="width:150px;">
+					<f:selectItem itemLabel="Seleccione la ciudad: " itemValue="" noSelectionOption="true" />
+					<f:selectItems value="#{listas.ciudades}" />
+				</p:selectOneMenu>
+			</h:panelGrid>
+			
+			<p:separator />
+			
+			<p:commandButton value="Enviar" update="msgs" actionListener="#{listas.displayLocation}" />
+			
+		</p:panel>
+		
+	</h:form>
+</h:body>
+</html>
