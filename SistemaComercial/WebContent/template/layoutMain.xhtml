@@ -8,11 +8,25 @@
 <h:head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>
-		<ui:insert>Sistema Comercial</ui:insert>
+		<ui:insert name="titulo">Sistema Comercial</ui:insert>
 	</title>
 	<h:outputStylesheet library="css" name="estilos.css" />
 </h:head>
-<h:body>
 
+<h:body>
+	<header>
+		<div>
+			<h:link>
+				<h:graphicImage library="images" name="logo-jsf-oracle.jpg" />
+			</h:link>
+		</div>
+	</header>
+	<div id="contenido">
+		<ui:insert name="contenido"></ui:insert>
+	</div>
+	
+	<footer>
+		<p>Footer del sitio</p>
+	</footer>
 </h:body>
 </html>
