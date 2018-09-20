@@ -15,5 +15,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/all-themes-1.0.10.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/primefaces-6.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/resources/js/jquery.maskMoney.js"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

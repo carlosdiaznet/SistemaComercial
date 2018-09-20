@@ -11,6 +11,8 @@
 		<ui:insert name="titulo">Sistema Comercial</ui:insert>
 	</title>
 	<h:outputStylesheet library="css" name="estilos.css" />
+	<h:outputScript library="js" name="jquery.min.js" />
+	<h:outputScript library="js" name="jquery.maskMoney.js" />
 </h:head>
 
 <h:body>
@@ -36,5 +38,15 @@
 	<footer>
 		<p>Implementacion de Java EE, JSF, JPA, CDI y PrimeFaces en Oracle 11g</p>
 	</footer>
+	
 </h:body>
+	<script>
+		function configurarMoneda(){
+			//$(".moneda").maskMoney({ decimal: ".", thousands: ",", allowZero: true});
+			$('.moneda ').mask("#,##0.00", {reverse: true});
+		}
+		$(document).ready(function(){
+			configurarMoneda();
+		});
+	</script>
 </html>
