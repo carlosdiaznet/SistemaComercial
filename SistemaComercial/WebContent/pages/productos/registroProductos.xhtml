@@ -8,6 +8,7 @@
 	<ui:define name="titulo">Nuevo producto</ui:define>
 	
 	<ui:define name="contenido">
+	<div class="contenedor-main">
 	<h1>Nuevo Producto</h1>
 	<p:toolbar style="margin-top:20px">
 		<p:toolbarGroup>
@@ -25,7 +26,24 @@
 		
 		<p:outputLabel value="Nombre" for="nombre" />
 		<p:inputText id="nombre" size="60" maxlength="80" />
+		
+		<p:outputLabel value="Categoria" for="categoria" />
+		<p:selectOneMenu id="categoria">
+			<f:selectItem itemLabel="Seleccione una categoria" />
+		</p:selectOneMenu>
+		
+		<p:outputLabel value="Subcategoria" for="subcategoria" />
+		<p:selectOneMenu id="subcategoria">
+			<f:selectItem itemLabel="Seleccione una subcategoria" />
+		</p:selectOneMenu>
+		
+		<p:outputLabel value="Valor unitario" for="valorUnitario" />
+		<p:inputText id="valorUnitario" size="10" maxlength="10" />
+		
+		<p:outputLabel value="Valores" for="valores" />
+		<p:inputText id="valores" size="10" maxlength="4" />
 	</p:panelGrid>
+	</div>
 	</ui:define>
 
 </ui:composition>

@@ -40,6 +40,11 @@ h1 {
 	padding: 0px 8px;
 }
 
+.contenedor-main{
+	width: 80%;
+	margin: auto;
+}
+
 #logo{
 	width: 200px;
 	height: 30px;
@@ -70,3 +75,14 @@ footer{
 	width: 150px;
 }
 
+.ui-panelgrid td{
+	height: 34px;
+}
+
+.ajax-status{
+	position: fixed;
+	top: 55px;
+	right: 10px;
+	width: 35px;
+	height: 35px;
+}
