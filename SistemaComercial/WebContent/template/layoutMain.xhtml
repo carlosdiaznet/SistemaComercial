@@ -16,7 +16,7 @@
 </h:head>
 
 <h:body>
-	<p:ajaxStatus styleClass="ajax-status">
+	<p:ajaxStatus styleClass="ajax-status" onsuccess="configurarMoneda()">
 		<f:facet name="start">
 			<h:graphicImage library="images" name="ajax-loader.gif" />
 		</f:facet>
@@ -41,12 +41,11 @@
 	
 </h:body>
 	<script>
-		function configurarMoneda(){
-			//$(".moneda").maskMoney({ decimal: ".", thousands: ",", allowZero: true});
-			$('.moneda ').mask("#,##0.00", {reverse: true});
-		}
 		$(document).ready(function(){
 			configurarMoneda();
 		});
+		function configurarMoneda(){
+			$('.currency').maskMoney({prefix:'$ ', thousands:',', decimal:'.', allowZero:true});
+		}	
 	</script>
 </html>
