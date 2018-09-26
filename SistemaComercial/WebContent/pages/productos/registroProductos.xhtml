@@ -9,40 +9,42 @@
 	
 	<ui:define name="contenido">
 	<div class="contenedor-main">
-	<h1>Nuevo Producto</h1>
-	<p:toolbar style="margin-top:20px">
-		<p:toolbarGroup>
-			<p:button value="Nuevo" outcome="/pages/productos/registroProductos.xhtml" />
-			<p:commandButton value="Guardar" id="btnGuardar" />
-		</p:toolbarGroup>
-		<p:toolbarGroup align="right">
-			<p:button value="Buscar" />
-		</p:toolbarGroup>
-	</p:toolbar>
-	
-	<p:panelGrid columns="2" id="panel" styleClass="panel-producto" columnClasses="rotulo, campo">
-		<p:outputLabel value="SKU" for="sku" />
-		<p:inputText id="sku" size="20" maxlength="20" />
+	<h:form>
+		<h1>Nuevo Producto</h1>
+		<p:toolbar style="margin-top:20px">
+			<p:toolbarGroup>
+				<p:button value="Nuevo" outcome="/pages/productos/registroProductos.xhtml" />
+				<p:commandButton value="Guardar" id="btnGuardar" />
+			</p:toolbarGroup>
+			<p:toolbarGroup align="right">
+				<p:button value="Buscar" outcome="/pages/productos/busquedaProductos" />
+			</p:toolbarGroup>
+		</p:toolbar>
 		
-		<p:outputLabel value="Nombre" for="nombre" />
-		<p:inputText id="nombre" size="60" maxlength="80" />
-		
-		<p:outputLabel value="Categoria" for="categoria" />
-		<p:selectOneMenu id="categoria">
-			<f:selectItem itemLabel="Seleccione una categoria" />
-		</p:selectOneMenu>
-		
-		<p:outputLabel value="Subcategoria" for="subcategoria" />
-		<p:selectOneMenu id="subcategoria">
-			<f:selectItem itemLabel="Seleccione una subcategoria" />
-		</p:selectOneMenu>
-		
-		<p:outputLabel value="Valor unitario" for="valorUnitario" />
-		<p:inputText id="valorUnitario" size="10" maxlength="10" styleClass="currency" />
-		
-		<p:outputLabel value="Valores" for="valores" />
-		<p:inputText id="valores" size="10" maxlength="4" />
-	</p:panelGrid>
+		<p:panelGrid columns="2" id="panel" styleClass="panel-producto" columnClasses="rotulo, campo">
+			<p:outputLabel value="SKU" for="sku" />
+			<p:inputText id="sku" size="20" maxlength="20" />
+			
+			<p:outputLabel value="Nombre" for="nombre" />
+			<p:inputText id="nombre" size="60" maxlength="80" />
+			
+			<p:outputLabel value="Categoria" for="categoria" />
+			<p:selectOneMenu id="categoria">
+				<f:selectItem itemLabel="Seleccione una categoria" />
+			</p:selectOneMenu>
+			
+			<p:outputLabel value="Subcategoria" for="subcategoria" />
+			<p:selectOneMenu id="subcategoria">
+				<f:selectItem itemLabel="Seleccione una subcategoria" />
+			</p:selectOneMenu>
+			
+			<p:outputLabel value="Valor unitario" for="valorUnitario" />
+			<p:inputText id="valorUnitario" size="10" maxlength="10" styleClass="currency" />
+			
+			<p:outputLabel value="Inventario" for="inventario" />
+			<p:inputText id="inventario" size="10" maxlength="4" />
+		</p:panelGrid>
+	</h:form>
 	</div>
 	</ui:define>
 

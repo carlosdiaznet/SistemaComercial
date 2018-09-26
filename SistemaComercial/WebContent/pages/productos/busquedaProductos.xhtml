@@ -1,0 +1,57 @@
+<ui:composition template="../../template/layoutMain.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="titulo">Busqueda de productos</ui:define>
+	
+	<ui:define name="contenido">
+	<div class="contenedor-main">
+	<h1>Busqueda de Productos</h1>
+	
+	<p:toolbar style="margin-top:20px">
+		<p:toolbarGroup>
+			<p:commandButton value="Buscar" />
+		</p:toolbarGroup>
+		<p:toolbarGroup align="right">
+			<p:button value="Nuevo" outcome="/pages/productos/registroProductos.xhtml" />
+		</p:toolbarGroup>
+	</p:toolbar>
+	
+	<p:panelGrid columns="2" id="panel" styleClass="panel-producto" columnClasses="rotulo, campo">
+		<p:outputLabel value="SKU" for="sku" />
+		<p:inputText id="sku" size="20" />
+		
+		<p:outputLabel value="Nombre" for="nombre" />
+		<p:inputText id="nombre" size="60" />
+	</p:panelGrid>
+	
+	<p:dataTable id="productosTabla" value="#{busquedaProductosMB.productosFiltrados}" var="producto"
+		style="margin-top: 20px" emptyMessage="Ningun producto encontrado." rows="20" paginator="true"
+		paginatorAlwaysVisible="false" paginatorPosition="bottom">
+			<p:column style="text-align:center; width: 100px;" headerText="SKU">
+				<h:outputText value="123" />
+			</p:column>
+			<p:column headerText="Nombre">
+				<h:outputText value="Camisetas Sport" />
+			</p:column>
+			<p:column headerText="Categoria">
+				<h:outputText value="Ropa deportiva" />
+			</p:column>
+			<p:column headerText="Valor unitario" style="text-align: right; width: 120px">
+				<h:outputText value="US$ 12.25" />
+			</p:column>
+			<p:column headerText="Inventario" style="text-align: center; width: 100px">
+				<h:outputText value="98" />
+			</p:column>
+			<p:column style="width: 100px; text-align: center;">
+				<p:button icon="ui-icon-pencil" title="Editar" />
+				<p:commandButton icon="ui-icon-trash" title="Eliminar" />
+			</p:column>
+	</p:dataTable>
+	</div>
+	</ui:define>
+
+</ui:composition>
