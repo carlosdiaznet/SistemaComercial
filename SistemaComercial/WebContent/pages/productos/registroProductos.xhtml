@@ -4,11 +4,13 @@
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
+	
 
 	<ui:define name="titulo">Nuevo producto</ui:define>
 	
 	<ui:define name="contenido">
 	<div class="contenedor-main">
+	
 	<h:form>
 		<h1>Nuevo Producto</h1>
 		<p:toolbar style="margin-top:20px">
@@ -39,7 +41,7 @@
 			</p:selectOneMenu>
 			
 			<p:outputLabel value="Valor unitario" for="valorUnitario" />
-			<p:inputText id="valorUnitario" size="10" maxlength="10" styleClass="currency" />
+			<p:inputText id="valorUnitario" size="10" maxlength="10" />
 			
 			<p:outputLabel value="Inventario" for="inventario" />
 			<p:inputText id="inventario" size="10" maxlength="4" />

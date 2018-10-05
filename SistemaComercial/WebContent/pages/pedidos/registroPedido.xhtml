@@ -1,0 +1,33 @@
+<ui:composition template="../../template/layoutMain.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="titulo">Registro de pedidos</ui:define>
+	
+	<ui:define name="contenido">
+	<div class="contenedor-main">
+	<h1>Registro de Pedidos</h1>
+	
+	<ui:include src="../../template/pedidos/botonesPedidos.xhtml" />
+	
+	<ui:include src="../../template/pedidos/capaPedido.xhtml" />
+	
+	<p:tabView style="margin-top: 20px">
+		<p:tab title="Items">
+			<ui:include src="../../template/pedidos/itemsPedido.xhtml" />
+		</p:tab>
+		<p:tab title="Datos de entrega">
+			<ui:include src="../../template/pedidos/datosEntregaPedido.xhtml" />
+		</p:tab>
+		<p:tab title="Observaciones">
+			<ui:include src="../../template/pedidos/observacionPedido.xhtml" />
+		</p:tab>
+	</p:tabView>
+
+	</div>
+	</ui:define>
+
+</ui:composition>

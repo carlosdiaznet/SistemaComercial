@@ -11,12 +11,10 @@
 		<ui:insert name="titulo">Sistema Comercial</ui:insert>
 	</title>
 	<h:outputStylesheet library="css" name="estilos.css" />
-	<h:outputScript library="js" name="jquery.min.js" />
-	<h:outputScript library="js" name="jquery.maskMoney.js" />
 </h:head>
 
 <h:body>
-	<p:ajaxStatus styleClass="ajax-status" onsuccess="configurarMoneda()">
+	<p:ajaxStatus styleClass="ajax-status">
 		<f:facet name="start">
 			<h:graphicImage library="images" name="ajax-loader.gif" />
 		</f:facet>
@@ -40,12 +38,4 @@
 	</footer>
 	
 </h:body>
-	<script>
-		$(document).ready(function(){
-			configurarMoneda();
-		});
-		function configurarMoneda(){
-			$('.currency').maskMoney({prefix:'$ ', thousands:',', decimal:'.', allowZero:true});
-		}	
-	</script>
 </html>
