@@ -23,10 +23,33 @@
 		</f:facet>
 	</p:ajaxStatus>
 	<header>
-		<div>
-			<h:link>
+		<div style="float: left">
+			<h:link outcome="/home.xhtml">
 				<h:graphicImage library="images" name="logo-jsf-oracle.jpg" id="logo" />
 			</h:link>
+		</div>
+		
+		<div style="float: right; margin-right: 110px">
+			<span style="float: left; height: 30px; line-height: 30px; margin-right: 60px">Hola usuario</span>
+			<h:form style="display: inline-block">
+				<p:menubar styleClass="menu-sistema">
+					<p:submenu label="Registros">
+						<p:menuitem value="Clientes" />
+						<p:menuitem value="Usuarios" />
+						<p:separator />
+						<p:menuitem value="Categorias" />
+						<p:menuitem value="Productos" outcome="/pages/productos/busquedaProductos.xhtml" />
+					</p:submenu>
+					<p:submenu label="Pedidos">
+						<p:menuitem value="Nuevo pedido" outcome="/pages/pedidos/registroPedido.xhtml" />
+						<p:menuitem value="Busqueda" outcome="/pages/pedidos/busquedaPedidos.xhtml" />
+					</p:submenu>
+					<p:menuitem value="Salir" />
+				</p:menubar>
+			</h:form>
+		</div>
+		<div style="clear: both">
+		
 		</div>
 	</header>
 	<div id="contenido">
