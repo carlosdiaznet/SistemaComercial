@@ -49,9 +49,15 @@
 			</p:column>
 			<p:column style="width: 100px; text-align: center;">
 				<p:button icon="ui-icon-pencil" title="Editar" />
-				<p:commandButton icon="ui-icon-trash" title="Eliminar" />
+				<p:commandButton icon="ui-icon-trash" title="Eliminar" oncomplete="PF('confirmacionEliminar').show();" />
 			</p:column>
 	</p:dataTable>
+	
+	<p:confirmDialog header="Eliminar producto" message="¿Seguro de eliminar el producto?"
+		widgetVar="confirmacionEliminar">
+		<p:button value="No" onclick="PF('confirmacionEliminar').hide(); return false;" />
+		<p:commandButton value="Si" oncomplete="PF('confirmacionEliminar').hide();" />
+	</p:confirmDialog>
 	</div>
 	</h:form>
 	</ui:define>
