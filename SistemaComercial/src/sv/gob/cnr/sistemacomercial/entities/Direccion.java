@@ -13,6 +13,9 @@ public class Direccion implements Serializable {
 	private String ciudad;
 	private String dp;
 	private String codPostal;
+	
+	private Cliente cliente;
+	
 	public long getId() {
 		return id;
 	}
@@ -55,6 +58,14 @@ public class Direccion implements Serializable {
 	public void setCodPostal(String codPostal) {
 		this.codPostal = codPostal;
 	}
+	
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -1,6 +1,8 @@
 package sv.gob.cnr.sistemacomercial.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente implements Serializable {
 
@@ -10,6 +12,10 @@ public class Cliente implements Serializable {
 	private String nombre;
 	private String email;
 	private String dui;
+	private TipoPersona tipo;
+	
+	private List<Direccion> direcciones = new ArrayList<Direccion>();
+	
 	public long getId() {
 		return id;
 	}
@@ -34,6 +40,23 @@ public class Cliente implements Serializable {
 	public void setDui(String dui) {
 		this.dui = dui;
 	}
+	
+	public TipoPersona getTipo() {
+		return tipo;
+	}
+	
+	public void setTipo(TipoPersona tipo) {
+		this.tipo = tipo;
+	}
+	
+	public List<Direccion> getDirecciones() {
+		return direcciones;
+	}
+	
+	public void setDirecciones(List<Direccion> direcciones) {
+		this.direcciones = direcciones;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
