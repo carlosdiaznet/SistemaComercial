@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -26,6 +28,9 @@ public class Cliente implements Serializable {
 	private String nombre;
 	private String email;
 	private String dui;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="TIPO", nullable=false, length=10)
 	private TipoPersona tipo;
 	
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)

@@ -6,13 +6,33 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="PEDIDO")
 public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private Long id;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name="FECHA_CREACION", nullable=false)
 	private Date fechaCreacion;
+	
+	@Column(columnDefinition="text")
 	private String observaciones;
+	
+	@Temporal(TemporalType.DATE)
+	@Column(name="FECHA_ENTREGA")
 	private Date fechaEntrega;
+	
+	@Column(name="VALOR_FLETE", nullable=false, precision=10, scale=2)
 	private BigDecimal valorFlete;
 	private BigDecimal valorDescuento;
 	private BigDecimal valorTotal;
@@ -23,6 +43,8 @@ public class Pedido implements Serializable {
 	
 	//private Usuario vendedor;
 	private Cliente cliente;
+	
+	
 	private DireccionEntrega direccionEntrega;
 	private List<ItemPedido> items = new ArrayList<ItemPedido>();
 	public Long getId() {

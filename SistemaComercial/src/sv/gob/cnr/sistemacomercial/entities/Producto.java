@@ -3,10 +3,17 @@ package sv.gob.cnr.sistemacomercial.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="PRODUCTO")
 public class Producto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
 	private Long id;
 	private String sku;
 	private String nombre;

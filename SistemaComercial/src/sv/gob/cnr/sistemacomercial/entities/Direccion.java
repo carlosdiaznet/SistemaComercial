@@ -2,25 +2,40 @@ package sv.gob.cnr.sistemacomercial.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="DIRECCION")
 public class Direccion implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue
 	private long id;
+	
+	@Column(name="CALLE", nullable=false, length=150)
 	private String calle;
+	
+	@Column(name="NUMERO", nullable=false)
 	private String numero;
+	
+	@Column(name="COMPLEMENTO", length=150)
 	private String complemento;
+	
+	@Column(name="CIUDAD", length=150)
 	private String ciudad;
 	private String dp;
 	private String codPostal;
 	
 	@ManyToOne
+	@JoinColumn(name="ID_CLIENTE", nullable=false)
 	private Cliente cliente;
 	
 	public long getId() {
