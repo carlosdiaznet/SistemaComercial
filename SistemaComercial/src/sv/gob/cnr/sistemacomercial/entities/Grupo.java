@@ -2,14 +2,12 @@ package sv.gob.cnr.sistemacomercial.entities;
 
 import java.io.Serializable;
 
-public class Categoria implements Serializable {
+public class Grupo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
-	private String nombre;
-	private String descripcion;
-	
+	private String rol;
 	
 	public Long getId() {
 		return id;
@@ -17,18 +15,13 @@ public class Categoria implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNombre() {
-		return nombre;
+	public String getRol() {
+		return rol;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
-	public String getDescripcion() {
-		return descripcion;
-	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+	
 	
 	@Override
 	public int hashCode() {
@@ -37,7 +30,6 @@ public class Categoria implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -46,7 +38,7 @@ public class Categoria implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Categoria other = (Categoria) obj;
+		Grupo other = (Grupo) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

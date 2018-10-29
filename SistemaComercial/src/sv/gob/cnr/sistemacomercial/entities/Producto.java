@@ -50,6 +50,7 @@ public class Producto implements Serializable {
 	public void setInventario(Integer inventario) {
 		this.inventario = inventario;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

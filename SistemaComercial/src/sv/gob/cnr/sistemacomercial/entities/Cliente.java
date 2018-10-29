@@ -10,29 +10,39 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
-@Table(name = "CLIENTE")
+@Table(name = "SC_CLIENTE")
 public class Cliente implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_CLIENTE_ID")
+	@SequenceGenerator(name="SEQ_SC_CLIENTE_ID", sequenceName="SEQ_SC_CLIENTE_ID", allocationSize=1)
 	private long id;
 	
 	@Column(name = "NOMBRE", nullable=false, length=100)
 	private String nombre;
+	
+	@Column(name="EMAIL", length=100)
 	private String email;
+	
+	@Column(name="DUI", length=10)
 	private String dui;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name="TIPO", nullable=false, length=10)
 	private TipoPersona tipo;
 	
+	@Transient
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
 	private List<Direccion> direcciones = new ArrayList<Direccion>();
 	

@@ -2,13 +2,15 @@ package sv.gob.cnr.sistemacomercial.entities;
 
 import java.io.Serializable;
 
-public class Categoria implements Serializable {
+public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private Long id;
+	private String carnet;
 	private String nombre;
-	private String descripcion;
+	private String nombreUsuario;
+	private String password;
 	
 	
 	public Long getId() {
@@ -17,17 +19,29 @@ public class Categoria implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
+	public String getCarnet() {
+		return carnet;
+	}
+	public void setCarnet(String carnet) {
+		this.carnet = carnet;
+	}
 	public String getNombre() {
 		return nombre;
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	public String getDescripcion() {
-		return descripcion;
+	public String getNombreUsuario() {
+		return nombreUsuario;
 	}
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	@Override
@@ -37,7 +51,6 @@ public class Categoria implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -46,7 +59,7 @@ public class Categoria implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Categoria other = (Categoria) obj;
+		Usuario other = (Usuario) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
