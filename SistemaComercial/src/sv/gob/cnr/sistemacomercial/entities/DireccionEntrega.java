@@ -2,16 +2,42 @@ package sv.gob.cnr.sistemacomercial.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="DIRECCION_ENTREGA")
 public class DireccionEntrega implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_DIRECCION_ENTREGA_ID")
+	@SequenceGenerator(name="SEQ_SC_DIRECCION_ENTREGA_ID", sequenceName="SEQ_SC_DIRECCION_ENTREGA_ID", allocationSize=1)
 	private String id;
+	
+	@Column(name="CALLE", length=200)
 	private String calle;
+	
+	@Column(name="NUMERO", length=100)
 	private String numero;
+	
+	@Column(name="COMPLEMENTO", length=100)
 	private String complemento;
+	
+	@Column(name="CUIDAD", length=100)
 	private String ciudad;
+	
+	@Column(name="DP", length=100)
 	private String dp;
+	
+	@Column(name="CODIGO_POSTAL", length=100)
 	private String codigoPostal;
 	
 	public String getId() {

@@ -2,15 +2,43 @@ package sv.gob.cnr.sistemacomercial.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="USUARIO")
 public class Usuario implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_USUARIO_ID")
+	@SequenceGenerator(name="SEQ_SC_USUARIO_ID", sequenceName="SEQ_SC_USUARIO_ID", allocationSize=1)
 	private Long id;
+	
+	@Column(name="CARNET", nullable=false, length=4)
 	private String carnet;
+	
+	@Column(name="NOMBRE", nullable=false, length=100)
 	private String nombre;
+	
+	@Column(name="NOMBRE_USUARIO", nullable=false, length=200)
 	private String nombreUsuario;
+	
+	@Column(name="PASSWORD", nullable=false, length=200)
 	private String password;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_GRUPO", nullable=false)
+	private Grupo grupo;
 	
 	
 	public Long getId() {
@@ -44,6 +72,14 @@ public class Usuario implements Serializable {
 		this.password = password;
 	}
 	
+	
+	
+	public Grupo getGrupo() {
+		return grupo;
+	}
+	public void setGrupo(Grupo grupo) {
+		this.grupo = grupo;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

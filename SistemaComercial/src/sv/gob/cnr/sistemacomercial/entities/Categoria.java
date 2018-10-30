@@ -2,12 +2,30 @@ package sv.gob.cnr.sistemacomercial.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="CATEGORIA")
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_CATEGORIA_ID")
+	@SequenceGenerator(name="SEQ_SC_CATEGORIA_ID", sequenceName="SEQ_SC_CATEGORIA_ID", allocationSize=1)
 	private Long id;
+	
+	@Column(name="NOMBRE", nullable=false)
 	private String nombre;
+	
+	@Column(name="DESCRIPCION")
 	private String descripcion;
 	
 	

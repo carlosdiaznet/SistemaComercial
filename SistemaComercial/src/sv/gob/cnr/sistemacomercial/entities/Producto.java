@@ -3,8 +3,12 @@ package sv.gob.cnr.sistemacomercial.entities;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -14,10 +18,21 @@ public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_PRODUCTO_ID")
+	@SequenceGenerator(name="SEQ_SC_PRODUCTO_ID", sequenceName="SEQ_SC_PRODUCTO_ID", allocationSize=1)
 	private Long id;
+	
+	@Column(name="SKU")
 	private String sku;
+	
+	@Column(name="NOMBRE")
 	private String nombre;
+	
+	@Column(name="VALOR_UNITARIO", nullable=false, precision=10, scale=2)
 	private BigDecimal valorUnitario;
+	
+	@Column(name="INVENTARIO")
 	private Integer inventario;
 	
 	public Long getId() {

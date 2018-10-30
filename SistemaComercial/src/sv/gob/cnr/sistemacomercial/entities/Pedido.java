@@ -8,7 +8,15 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -19,34 +27,57 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_PEDIDO_ID")
+	@SequenceGenerator(name="SEQ_SC_PEDIDO_ID", sequenceName="SEQ_SC_PEDIDO_ID", allocationSize=1)
 	private Long id;
 	
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	@Column(name="FECHA_CREACION", nullable=false)
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaCreacion;
 	
 	@Column(columnDefinition="text")
 	private String observaciones;
 	
-	@Temporal(TemporalType.DATE)
+	
 	@Column(name="FECHA_ENTREGA")
+	@Temporal(TemporalType.DATE)
 	private Date fechaEntrega;
 	
 	@Column(name="VALOR_FLETE", nullable=false, precision=10, scale=2)
 	private BigDecimal valorFlete;
+	
+	@Column(name="VALOR_DESCUENTO", nullable=false, precision=10, scale=2)
 	private BigDecimal valorDescuento;
+	
+	@Column(name="VALOR_TOTAL", nullable=false, precision=10, scale=2)
 	private BigDecimal valorTotal;
 	
 	//Enum
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="ESTADO_PEDIDO", nullable=false, length=10)
 	private EstadoPedido estadoPedido;
+	
+	@Enumerated(EnumType.STRING)
+	@Column(name="FORMA_PAGO", nullable=false, length=10)
 	private FormaPago formaPago;
 	
 	//private Usuario vendedor;
+	@ManyToOne
+	@JoinColumn(name="ID_CLIENTE", nullable=false)
 	private Cliente cliente;
 	
-	
+	@ManyToOne
+	@JoinColumn(name="ID_DIRECCION_ENTREGA", nullable=false)
 	private DireccionEntrega direccionEntrega;
+	
+	@OneToMany
+	@JoinColumn(name="ITEM_PEDIDO_FK")
 	private List<ItemPedido> items = new ArrayList<ItemPedido>();
+	
+	
 	public Long getId() {
 		return id;
 	}

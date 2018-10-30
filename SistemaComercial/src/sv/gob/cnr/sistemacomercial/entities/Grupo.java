@@ -1,13 +1,36 @@
 package sv.gob.cnr.sistemacomercial.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="USUARIO")
 public class Grupo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_GRUPO_ID")
+	@SequenceGenerator(name="SEQ_SC_GRUPO_ID", sequenceName="SEQ_SC_GRUPO_ID", allocationSize=1)
 	private Long id;
+	
+	@Column(name="ROL", nullable=false, length=100)
 	private String rol;
+	
+	@OneToMany(mappedBy="grupo", cascade = CascadeType.ALL)
+	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	public Long getId() {
 		return id;
@@ -23,6 +46,12 @@ public class Grupo implements Serializable{
 	}
 	
 	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
