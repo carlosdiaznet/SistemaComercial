@@ -5,9 +5,11 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +19,9 @@ public class Direccion implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue
+	@Column(name="ID")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_DIRECCION_ID")
+	@SequenceGenerator(name="SEQ_SC_DIRECCION_ID", sequenceName="SEQ_SC_DIRECCION_ID", allocationSize=1)
 	private long id;
 	
 	@Column(name="CALLE", nullable=false, length=150)
@@ -31,7 +35,11 @@ public class Direccion implements Serializable {
 	
 	@Column(name="CIUDAD", length=150)
 	private String ciudad;
+	
+	@Column(name="DP", length=150)
 	private String dp;
+	
+	@Column(name="CODIGO_POSTAL")
 	private String codPostal;
 	
 	@ManyToOne

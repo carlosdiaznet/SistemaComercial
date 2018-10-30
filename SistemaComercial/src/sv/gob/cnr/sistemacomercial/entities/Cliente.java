@@ -15,7 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "SC_CLIENTE")
@@ -29,6 +29,7 @@ public class Cliente implements Serializable {
 	@SequenceGenerator(name="SEQ_SC_CLIENTE_ID", sequenceName="SEQ_SC_CLIENTE_ID", allocationSize=1)
 	private long id;
 	
+	@NotNull
 	@Column(name = "NOMBRE", nullable=false, length=100)
 	private String nombre;
 	
@@ -42,7 +43,7 @@ public class Cliente implements Serializable {
 	@Column(name="TIPO", nullable=false, length=10)
 	private TipoPersona tipo;
 	
-	@Transient
+	
 	@OneToMany(mappedBy="cliente", cascade = CascadeType.ALL)
 	private List<Direccion> direcciones = new ArrayList<Direccion>();
 	
