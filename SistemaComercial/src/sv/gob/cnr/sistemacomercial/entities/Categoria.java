@@ -1,12 +1,16 @@
 package sv.gob.cnr.sistemacomercial.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -17,7 +21,7 @@ public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="ID")
+	@Column(name="ID_CATEGORIA")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_CATEGORIA_ID")
 	@SequenceGenerator(name="SEQ_SC_CATEGORIA_ID", sequenceName="SEQ_SC_CATEGORIA_ID", allocationSize=1)
 	private Long id;
@@ -47,6 +51,9 @@ public class Categoria implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	@OneToMany(mappedBy="categoria", cascade = CascadeType.ALL)
+	List<Producto> productos = new ArrayList<Producto>();
 	
 	@Override
 	public int hashCode() {

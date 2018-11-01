@@ -27,7 +27,7 @@ public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="ID")
+	@Column(name="ID_PEDIDO")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_PEDIDO_ID")
 	@SequenceGenerator(name="SEQ_SC_PEDIDO_ID", sequenceName="SEQ_SC_PEDIDO_ID", allocationSize=1)
 	private Long id;

@@ -15,13 +15,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USUARIO")
+@Table(name="GRUPO")
 public class Grupo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="ID")
+	@Column(name="ID_GRUPO")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_GRUPO_ID")
 	@SequenceGenerator(name="SEQ_SC_GRUPO_ID", sequenceName="SEQ_SC_GRUPO_ID", allocationSize=1)
 	private Long id;

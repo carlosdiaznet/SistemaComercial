@@ -19,7 +19,7 @@ public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="ID")
+	@Column(name="ID_USUARIO")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_USUARIO_ID")
 	@SequenceGenerator(name="SEQ_SC_USUARIO_ID", sequenceName="SEQ_SC_USUARIO_ID", allocationSize=1)
 	private Long id;

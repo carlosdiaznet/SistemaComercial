@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -18,7 +20,7 @@ public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="ID")
+	@Column(name="ID_PRODUCTO")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_PRODUCTO_ID")
 	@SequenceGenerator(name="SEQ_SC_PRODUCTO_ID", sequenceName="SEQ_SC_PRODUCTO_ID", allocationSize=1)
 	private Long id;
@@ -34,6 +36,10 @@ public class Producto implements Serializable {
 	
 	@Column(name="INVENTARIO")
 	private Integer inventario;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_CATEGORIA", nullable=false)
+	private Categoria categoria;
 	
 	public Long getId() {
 		return id;
@@ -66,6 +72,14 @@ public class Producto implements Serializable {
 		this.inventario = inventario;
 	}
 	
+	
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;

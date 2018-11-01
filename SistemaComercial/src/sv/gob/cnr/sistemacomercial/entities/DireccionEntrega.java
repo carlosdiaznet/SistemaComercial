@@ -17,7 +17,7 @@ public class DireccionEntrega implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name="ID")
+	@Column(name="ID_DIRECCION_ENTREGA")
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_DIRECCION_ENTREGA_ID")
 	@SequenceGenerator(name="SEQ_SC_DIRECCION_ENTREGA_ID", sequenceName="SEQ_SC_DIRECCION_ENTREGA_ID", allocationSize=1)
 	private String id;
