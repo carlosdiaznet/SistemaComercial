@@ -15,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="CATEGORIA")
+@Table(name="SC_CATEGORIA")
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
