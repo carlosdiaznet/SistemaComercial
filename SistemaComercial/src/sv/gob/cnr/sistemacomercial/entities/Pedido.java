@@ -22,7 +22,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="PEDIDO")
+@Table(name="SC_PEDIDO")
 public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -37,7 +37,7 @@ public class Pedido implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date fechaCreacion;
 	
-	@Column(columnDefinition="text")
+	@Column(name="OBSERVACIONES", columnDefinition="text")
 	private String observaciones;
 	
 	
