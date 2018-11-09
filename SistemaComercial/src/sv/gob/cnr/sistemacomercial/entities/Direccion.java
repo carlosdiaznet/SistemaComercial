@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="DIRECCION")
+@Table(name="SC_DIRECCION")
 public class Direccion implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
@@ -27,7 +27,7 @@ public class Direccion implements Serializable {
 	@Column(name="CALLE", nullable=false, length=150)
 	private String calle;
 	
-	@Column(name="NUMERO", nullable=false)
+	@Column(name="NUMERO", nullable=false, length=150)
 	private String numero;
 	
 	@Column(name="COMPLEMENTO", length=150)
