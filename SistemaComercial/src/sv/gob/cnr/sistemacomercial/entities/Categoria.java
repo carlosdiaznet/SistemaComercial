@@ -26,7 +26,7 @@ public class Categoria implements Serializable {
 	@SequenceGenerator(name="SEQ_SC_CATEGORIA_ID", sequenceName="SEQ_SC_CATEGORIA_ID", allocationSize=1)
 	private Long id;
 	
-	@Column(name="NOMBRE", nullable=false)
+	@Column(name="NOMBRE")
 	private String nombre;
 	
 	@Column(name="DESCRIPCION")

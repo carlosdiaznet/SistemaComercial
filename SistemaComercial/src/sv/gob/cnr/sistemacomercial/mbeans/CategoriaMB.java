@@ -1,6 +1,5 @@
 package sv.gob.cnr.sistemacomercial.mbeans;
 
-import java.io.Serializable;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -10,11 +9,10 @@ import sv.gob.cnr.sistemacomercial.entities.Categoria;
 
 @ManagedBean(name = "categoriaMB")
 @ViewScoped
-public class CategoriaMB implements Serializable {
+public class CategoriaMB {
 
-	private static final long serialVersionUID = 1L;
 	
-	private Categoria categoria;
+	private Categoria categoria = new Categoria();
 
 	public Categoria getCategoria() {
 		return categoria;
