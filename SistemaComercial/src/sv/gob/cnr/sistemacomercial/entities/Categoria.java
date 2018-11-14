@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="SC_CATEGORIA")
@@ -26,6 +27,7 @@ public class Categoria implements Serializable {
 	@SequenceGenerator(name="SEQ_SC_CATEGORIA_ID", sequenceName="SEQ_SC_CATEGORIA_ID", allocationSize=1)
 	private Long id;
 	
+	@NotNull
 	@Column(name="NOMBRE")
 	private String nombre;
 	

@@ -12,7 +12,13 @@ import sv.gob.cnr.sistemacomercial.entities.Categoria;
 public class CategoriaMB {
 
 	
-	private Categoria categoria = new Categoria();
+	private Categoria categoria;
+	
+	
+
+	public CategoriaMB() {
+		categoria = new Categoria();
+	}
 
 	public Categoria getCategoria() {
 		return categoria;

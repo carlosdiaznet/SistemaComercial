@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name="SC_PRODUCTO")
@@ -34,6 +35,7 @@ public class Producto implements Serializable {
 	@Column(name="VALOR_UNITARIO", nullable=false, precision=10, scale=2)
 	private BigDecimal valorUnitario;
 	
+	@NotNull
 	@Column(name="INVENTARIO")
 	private Integer inventario;
 	
