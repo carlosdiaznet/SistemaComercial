@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 
 @Entity
 @Table(name="SC_GRUPO")
@@ -22,8 +23,9 @@ public class Grupo implements Serializable{
 	
 	@Id
 	@Column(name="ID_GRUPO")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_GRUPO_ID")
-	@SequenceGenerator(name="SEQ_SC_GRUPO_ID", sequenceName="SEQ_SC_GRUPO_ID", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="SC_CONTADOR")
+	@TableGenerator(name="SC_CONTADOR", initialValue=1, pkColumnName="CNT_NOMBRE", pkColumnValue="CNT_VALOR",
+			allocationSize=1, valueColumnName="CNT_VALOR", table="SC_CONTADOR", schema="CURSO_JSF04")
 	private Long id;
 	
 	@Column(name="ROL", nullable=false, length=100)

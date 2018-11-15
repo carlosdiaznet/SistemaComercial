@@ -4,5 +4,6 @@
 		<non-jta-data-source>jdbc/siscom</non-jta-data-source>
 		<class>sv.gob.cnr.sistemacomercial.entities.Categoria</class>
 		<class>sv.gob.cnr.sistemacomercial.entities.Producto</class>
+		<class>sv.gob.cnr.sistemacomercial.entities.Contador</class>
 	</persistence-unit>
 </persistence>
