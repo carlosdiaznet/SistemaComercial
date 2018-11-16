@@ -5,5 +5,7 @@
 		<class>sv.gob.cnr.sistemacomercial.entities.Categoria</class>
 		<class>sv.gob.cnr.sistemacomercial.entities.Producto</class>
 		<class>sv.gob.cnr.sistemacomercial.entities.Contador</class>
+		<class>sv.gob.cnr.sistemacomercial.entities.Grupo</class>
+		<class>sv.gob.cnr.sistemacomercial.entities.Usuario</class>
 	</persistence-unit>
 </persistence>
