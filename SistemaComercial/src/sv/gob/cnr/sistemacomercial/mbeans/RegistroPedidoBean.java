@@ -1,4 +1,4 @@
-package sv.gob.cnr.sistemacomercial.controller;
+package sv.gob.cnr.sistemacomercial.mbeans;
 
 import java.util.ArrayList;
 import java.util.List;
