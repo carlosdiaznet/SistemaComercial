@@ -4,20 +4,19 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="SC_CONTADOR", schema="CURSO_JSF04")
+@Table(schema="CURSO_JSF04", name="SC_CONTADOR")
+@NamedQuery(name="Contador.findAll", query="SELECT c FROM Contador c")
 public class Contador implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@Column(name="CNT_ID")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer cntId;
 	
 	@Column(name="CNT_NOMBRE")

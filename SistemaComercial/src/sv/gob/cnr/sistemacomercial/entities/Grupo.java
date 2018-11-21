@@ -10,21 +10,23 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 @Entity
-@Table(name="SC_GRUPO")
+@Table(schema = "CURSO_JSF04", name="SC_GRUPO")
+@NamedQuery(name="Grupo.findAll", query="SELECT a FROM Grupo a")
 public class Grupo implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@TableGenerator(name="ID_GRUPO", schema="CURSO_JSF04", table="SC_CONTADOR", 
+		pkColumnName="CNT_NOMBRE", valueColumnName="CNT_VALOR", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="ID_GRUPO")
 	@Column(name="ID_GRUPO")
-	@GeneratedValue(strategy=GenerationType.TABLE, generator="SC_CONTADOR")
-	@TableGenerator(name="SC_CONTADOR", initialValue=1, pkColumnName="CNT_NOMBRE", pkColumnValue="CNT_VALOR",
-			allocationSize=1, valueColumnName="CNT_VALOR", table="SC_CONTADOR", schema="CURSO_JSF04")
 	private Long id;
 	
 	@Column(name="ROL", nullable=false, length=100)

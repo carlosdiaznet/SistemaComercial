@@ -10,24 +10,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
+import javax.persistence.TableGenerator;
 
 @Entity
-@Table(name="SC_CATEGORIA")
+@Table(schema = "CURSO_JSF04", name="SC_CATEGORIA")
+@NamedQuery(name="Categoria.findAll", query="SELECT a FROM Categoria a")
 public class Categoria implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@TableGenerator(name="ID_CATEGORIA", schema="CURSO_JSF04", table="SC_CATEGORIA", 
+		pkColumnName="CNT_NOMBRE", valueColumnName="CNT_VALOR", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="ID_CATEGORIA")
 	@Column(name="ID_CATEGORIA")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_CATEGORIA_ID")
-	@SequenceGenerator(name="SEQ_SC_CATEGORIA_ID", sequenceName="SEQ_SC_CATEGORIA_ID", allocationSize=1)
 	private Long id;
-	
-	@NotNull
+
 	@Column(name="NOMBRE")
 	private String nombre;
 	
