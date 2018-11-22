@@ -10,8 +10,6 @@ import sv.gob.cnr.sistemacomercial.entities.Categoria;
 @ManagedBean(name = "categoriaMB")
 @ViewScoped
 public class CategoriaMB {
-
-	
 	private Categoria categoria;
 	
 	
@@ -28,7 +26,7 @@ public class CategoriaMB {
 		this.categoria = categoria;
 	}
 	
-	public void registrar()throws Exception{
+	public void registrar() throws Exception{
 		CategoriaController reg;
 		try {
 			reg = new CategoriaController();

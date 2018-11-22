@@ -2,10 +2,10 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
 	<persistence-unit name="siscomPU" transaction-type="RESOURCE_LOCAL">
 		<non-jta-data-source>jdbc/siscom</non-jta-data-source>
-		<class>sv.gob.cnr.sistemacomercial.entities.Categoria</class>
 		<class>sv.gob.cnr.sistemacomercial.entities.Producto</class>
 		<class>sv.gob.cnr.sistemacomercial.entities.Contador</class>
 		<class>sv.gob.cnr.sistemacomercial.entities.Grupo</class>
 		<class>sv.gob.cnr.sistemacomercial.entities.Usuario</class>
+		<class>sv.gob.cnr.sistemacomercial.entities.Categoria</class>
 	</persistence-unit>
 </persistence>

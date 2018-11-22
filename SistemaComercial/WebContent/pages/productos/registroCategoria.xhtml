@@ -27,10 +27,10 @@
 		<p:panelGrid columns="2" id="panel" styleClass="panel-producto" columnClasses="rotulo, campo">
 			
 			<p:outputLabel value="Nombre" for="nombre" />
-			<p:inputText id="nombre" size="60" maxlength="80" value="#{categoriaMB.categoria.nombre}" />
+			<p:inputText id="nombre" size="50" maxlength="50" value="#{categoriaMB.categoria.nombre}"  />
 			
 			<p:outputLabel value="Descripcion" for="descripcion" />
-			<p:inputText id="descripcion" size="60" maxlength="80" value="#{categoriaMB.categoria.descripcion}" />
+			<p:inputText id="descripcion" size="100" maxlength="200" value="#{categoriaMB.categoria.descripcion}" />
 			
 		</p:panelGrid>
 	</h:form>

@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
+
 @Entity
 @Table(schema = "CURSO_JSF04", name="SC_CATEGORIA")
 @NamedQuery(name="Categoria.findAll", query="SELECT a FROM Categoria a")
@@ -23,17 +24,20 @@ public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@TableGenerator(name="ID_CATEGORIA", schema="CURSO_JSF04", table="SC_CATEGORIA", 
+	@TableGenerator(name="ID_CATEGORIA", schema="CURSO_JSF04", table="SC_CONTADOR", 
 		pkColumnName="CNT_NOMBRE", valueColumnName="CNT_VALOR", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.TABLE, generator="ID_CATEGORIA")
 	@Column(name="ID_CATEGORIA")
 	private Long id;
-
-	@Column(name="NOMBRE")
+	
+	@Column(name="NOMBRE", nullable=false, length=50)
 	private String nombre;
 	
-	@Column(name="DESCRIPCION")
+	@Column(name="DESCRIPCION", nullable=true, length=200)
 	private String descripcion;
+	
+	@OneToMany(mappedBy="categoria", cascade = CascadeType.ALL)
+	List<Producto> productos = new ArrayList<Producto>();
 	
 	
 	public Long getId() {
@@ -54,10 +58,6 @@ public class Categoria implements Serializable {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	@OneToMany(mappedBy="categoria", cascade = CascadeType.ALL)
-	List<Producto> productos = new ArrayList<Producto>();
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -65,7 +65,6 @@ public class Categoria implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
-	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
