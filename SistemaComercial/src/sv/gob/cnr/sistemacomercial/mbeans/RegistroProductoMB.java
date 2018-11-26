@@ -15,7 +15,7 @@ public class RegistroProductoMB implements Serializable {
 	
 	private Producto producto;
 	
-	RegistroProductoMB(){
+	public RegistroProductoMB(){
 		producto = new Producto();
 	}
 	

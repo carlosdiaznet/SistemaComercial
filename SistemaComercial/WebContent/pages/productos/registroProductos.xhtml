@@ -26,10 +26,12 @@
 		
 		<p:panelGrid columns="2" id="panel" styleClass="panel-producto" columnClasses="rotulo, campo">
 			<p:outputLabel value="SKU" for="sku" />
-			<p:inputText id="sku" size="20" maxlength="20" />
+			<p:inputText id="sku" size="20" maxlength="20"
+				value="#{registroProductoMB.producto.sku}" />
 			
 			<p:outputLabel value="Nombre" for="nombre" />
-			<p:inputText id="nombre" size="60" maxlength="80" />
+			<p:inputText id="nombre" size="60" maxlength="80"
+				value="#{registroProductoMB.producto.nombre}" />
 			
 			<p:outputLabel value="Categoria" for="categoria" />
 			<p:selectOneMenu id="categoria">
@@ -37,16 +39,19 @@
 			</p:selectOneMenu>
 			
 			<p:outputLabel value="Subcategoria" for="subcategoria" />
-			<p:selectOneMenu id="subcategoria">
+			<p:selectOneMenu id="subcategoria" value="#{registroProductoMB.producto.categoria}">
 				<f:selectItem itemLabel="Seleccione una subcategoria" />
 			</p:selectOneMenu>
 			
 			<p:outputLabel value="Valor unitario" for="valorUnitario" />
-			<p:inputText id="valorUnitario" size="10" maxlength="10" />
+			<p:inputText id="valorUnitario" size="10" maxlength="10"
+				value="#{registroProductoMB.producto.valorUnitario}">
+				<f:convertNumber maxFractionDigits="2" minFractionDigits="2" />
+			</p:inputText>
 			
 			<p:outputLabel value="Inventario" for="inventario" />
 			<p:inputText id="inventario" size="10" maxlength="4"
-				value="#{registroProductoBean.producto.inventario}" />
+				value="#{registroProductoMB.producto.inventario}" />
 		</p:panelGrid>
 	</h:form>
 	</div>
