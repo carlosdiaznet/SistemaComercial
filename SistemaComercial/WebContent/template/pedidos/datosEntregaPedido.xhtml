@@ -6,11 +6,13 @@
 
 	<p:panelGrid columns="4" style="width:100%" columnClasses="rotulo, campo, rotulo, campo">
 		<p:outputLabel value="Dato de entrega" for="datoEntrega" />
-		<p:calendar id="datoEntrega" size="10" pattern="dd/MM/yyyy" />
+		<p:calendar id="datoEntrega" size="10" pattern="dd/MM/yyyy"
+			value="#{registroPedidoMB.pedido.fechaEntrega}" />
 		<p:spacer />
 		<p:spacer />
 		<p:outputLabel value="Calle" for="calle" />
-		<p:inputText id="calle" size="50" />
+		<p:inputText id="calle" size="50"
+			value="#{registroPedidoMB.pedido.direccionEntrega.calle}" />
 		
 		<p:outputLabel value="Numero" for="numero" />
 		<p:inputText id="numero" size="5" />

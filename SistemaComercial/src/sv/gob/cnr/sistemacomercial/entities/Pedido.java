@@ -64,7 +64,11 @@ public class Pedido implements Serializable {
 	@Column(name="FORMA_PAGO", nullable=false, length=10)
 	private FormaPago formaPago;
 	
-	//private Usuario vendedor;
+	
+	@ManyToOne
+	@JoinColumn(name="ID_USUARIO", nullable=false)
+	private Usuario vendedor;
+	
 	@ManyToOne
 	@JoinColumn(name="ID_CLIENTE", nullable=false)
 	private Cliente cliente;
@@ -149,6 +153,13 @@ public class Pedido implements Serializable {
 	}
 	public void setItems(List<ItemPedido> items) {
 		this.items = items;
+	}
+
+	public Usuario getVendedor() {
+		return vendedor;
+	}
+	public void setVendedor(Usuario vendedor) {
+		this.vendedor = vendedor;
 	}
 	@Override
 	public int hashCode() {
