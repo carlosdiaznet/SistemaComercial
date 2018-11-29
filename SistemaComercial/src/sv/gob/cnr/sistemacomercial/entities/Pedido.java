@@ -15,21 +15,24 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.TableGenerator;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-@Table(name="SC_PEDIDO")
+@Table(schema = "CURSO_JSF04", name="SC_PEDIDO")
+@NamedQuery(name="Pedido.findAll", query="SELECT a FROM Pedido a")
 public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@TableGenerator(name="ID_PEDIDO", schema="CURSO_JSF04", table="SC_CONTADOR", 
+		pkColumnName="CNT_NOMBRE", valueColumnName="CNT_VALOR", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.TABLE, generator="ID_PEDIDO")
 	@Column(name="ID_PEDIDO")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_SC_PEDIDO_ID")
-	@SequenceGenerator(name="SEQ_SC_PEDIDO_ID", sequenceName="SEQ_SC_PEDIDO_ID", allocationSize=1)
 	private Long id;
 	
 	
