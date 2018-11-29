@@ -15,19 +15,24 @@
 			value="#{registroPedidoMB.pedido.direccionEntrega.calle}" />
 		
 		<p:outputLabel value="Numero" for="numero" />
-		<p:inputText id="numero" size="5" />
+		<p:inputText id="numero" size="5" 
+			value="#{registroPedidoMB.pedido.direccionEntrega.numero}"/>
 		
 		<p:outputLabel value="Complemento" for="complemento" />
-		<p:inputText id="complemento" size="50" />
+		<p:inputText id="complemento" size="50" 
+			value="#{registroPedidoMB.pedido.direccionEntrega.complemento}" />
 		
 		<p:outputLabel value="Ciudad" for="ciudad" />
-		<p:inputText id="ciudad" size="20" />
+		<p:inputText id="ciudad" size="20" 
+			value="#{registroPedidoMB.pedido.direccionEntrega.ciudad}" />
 		
 		<p:outputLabel value="Estado" for="estado" />
-		<p:inputText id="estado" size="20" />
+		<p:inputText id="estado" size="20"
+			value="#{registroPedidoMB.pedido.estadoPedido}" />
 		
-		<p:outputLabel value="CEP" for="cep" />
-		<p:inputText id="cep" size="10" />
+		<p:outputLabel value="Codigo postal" for="cp" />
+		<p:inputText id="cp" size="10"
+			value="#{registroPedidoMB.pedido.direccionEntrega.codigoPostal}" />
 		
 	</p:panelGrid>
 
