@@ -10,7 +10,9 @@
 	
 	<ui:define name="contenido">
 	<div class="contenedor-main">
-	
+	<f:metadata>
+		<f:event listener="#{registroProductoMB.inicializar}" type="preRenderView" />
+	</f:metadata>
 	<h:form>
 		<h1>Nuevo Producto</h1>
 		<p:messages autoUpdate="true" closable="true" />
@@ -36,6 +38,8 @@
 			<p:outputLabel value="Categoria" for="categoria" />
 			<p:selectOneMenu id="categoria">
 				<f:selectItem itemLabel="Seleccione una categoria" />
+				<f:selectItems value="#{registroProductoMB.listCategoria}" var="categoria"
+					itemValue="#{categoria}" itemLabel="#{categoria.descripcion}" />
 			</p:selectOneMenu>
 			
 			<p:outputLabel value="Subcategoria" for="subcategoria" />
