@@ -5,10 +5,8 @@ import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.entities.Producto;
 
@@ -17,6 +15,9 @@ import sv.gob.cnr.sistemacomercial.entities.Producto;
 public class RegistroProductoMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private EntityManager manager;
 	
 	private Producto producto;
 	
@@ -28,11 +29,7 @@ public class RegistroProductoMB implements Serializable {
 	
 	public void inicializar(){
 		System.out.println("Inicializando lista...");
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("siscomPU");
-		EntityManager manager = factory.createEntityManager();
-		
 		listCategoria = manager.createQuery("select c from Categoria c", Categoria.class).getResultList();
-		manager.close();
 	}
 	
 	public void guardar(){
@@ -50,6 +47,4 @@ public class RegistroProductoMB implements Serializable {
 	public List<Categoria> getListCategoria() {
 		return listCategoria;
 	}
-	
-	
 }
