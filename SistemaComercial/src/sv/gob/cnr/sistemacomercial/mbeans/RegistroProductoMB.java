@@ -6,9 +6,9 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.persistence.EntityManager;
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.entities.Producto;
+import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
 
 @ManagedBean(name = "registroProductoMB")
 @ViewScoped
@@ -17,7 +17,7 @@ public class RegistroProductoMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Inject
-	private EntityManager manager;
+	private CategoriaRepository caterorias;
 	
 	private Producto producto;
 	
@@ -29,7 +29,7 @@ public class RegistroProductoMB implements Serializable {
 	
 	public void inicializar(){
 		System.out.println("Inicializando lista...");
-		listCategoria = manager.createQuery("select c from Categoria c", Categoria.class).getResultList();
+		listCategoria = caterorias.listar();
 	}
 	
 	public void guardar(){
