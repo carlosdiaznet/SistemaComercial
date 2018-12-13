@@ -20,6 +20,7 @@ public class RegistroProductoMB implements Serializable {
 	private CategoriaRepository caterorias;
 	
 	private Producto producto;
+	private Categoria categoria;
 	
 	private List<Categoria> listCategoria;
 	
@@ -47,4 +48,14 @@ public class RegistroProductoMB implements Serializable {
 	public List<Categoria> getListCategoria() {
 		return listCategoria;
 	}
+
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+	
+	
 }

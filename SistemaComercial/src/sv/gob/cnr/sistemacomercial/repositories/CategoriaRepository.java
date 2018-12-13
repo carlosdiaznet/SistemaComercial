@@ -18,5 +18,10 @@ public class CategoriaRepository implements Serializable {
 	public List<Categoria> listar(){
 		return manager.createQuery("select c from Categoria c", Categoria.class).getResultList();
 	}
+	
+	//Metodo para buscar por id dentro de la lista Resullist
+	public Categoria byId(Long id){
+		return manager.find(Categoria.class, id);
+	}
 
 }
