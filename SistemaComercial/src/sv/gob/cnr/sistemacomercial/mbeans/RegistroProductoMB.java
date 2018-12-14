@@ -34,7 +34,7 @@ public class RegistroProductoMB implements Serializable {
 	}
 	
 	public void guardar(){
-		throw new RuntimeException("Test de almacenamiento");
+		System.out.println("Categoria seleccionada: " + categoria.getNombre());
 	}
 
 	public Producto getProducto() {
