@@ -9,9 +9,9 @@ public class CategoriaController extends SystemController {
 	}
 
 	public void registrarCategoria(Categoria ctga){
-		transaccion.begin();
-		em.persist(ctga);
-		transaccion.commit();
+			transaccion.begin();
+			em.persist(ctga);	
+			transaccion.commit();
 	}
 	
 }

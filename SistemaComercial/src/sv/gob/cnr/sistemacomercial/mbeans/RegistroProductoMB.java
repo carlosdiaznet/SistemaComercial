@@ -34,7 +34,7 @@ public class RegistroProductoMB implements Serializable {
 	}
 	
 	public void guardar(){
-		System.out.println("Categoria seleccionada: " + categoria.getNombre());
+		System.out.println("Categoria seleccionada: ");
 	}
 
 	public Producto getProducto() {
