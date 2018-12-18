@@ -19,7 +19,7 @@
 			<p:toolbarGroup>
 				<p:button value="Nuevo" outcome="/pages/productos/registroProductos.xhtml" />
 				<p:commandButton value="Guardar" id="btnGuardar" actionListener="#{categoriaMB.registrar()}"
-					update="mensaje, frmCategoria" />
+					update="mensaje, @form :frmCategoria" />
 			</p:toolbarGroup>
 			<p:toolbarGroup align="right">
 				<p:button value="Buscar" outcome="/pages/productos/busquedaProductos" />
