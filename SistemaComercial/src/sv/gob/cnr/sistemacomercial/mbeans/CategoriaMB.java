@@ -1,6 +1,9 @@
 package sv.gob.cnr.sistemacomercial.mbeans;
 
 
+import java.io.Serializable;
+
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -11,13 +14,17 @@ import sv.gob.cnr.sistemacomercial.entities.Categoria;
 
 @ManagedBean(name = "categoriaMB")
 @ViewScoped
-public class CategoriaMB {
+public class CategoriaMB implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
 	private Categoria categoria;
 	
 	
 
-	public CategoriaMB() {
-		categoria = new Categoria();
+	@PostConstruct
+	public void init(){
+		 categoria = new Categoria();
 	}
 
 	public Categoria getCategoria() {
@@ -28,6 +35,12 @@ public class CategoriaMB {
 		this.categoria = categoria;
 	}
 	
+	
+	public String clear(){
+		
+		return "registroCategoria.xhtml?faces-redirect=true";
+	}
+	
 	public void registrar() throws Exception{
 		CategoriaController reg;
 		try {
@@ -35,6 +48,7 @@ public class CategoriaMB {
 			reg.registrarCategoria(categoria);
 			FacesContext.getCurrentInstance().addMessage(null, 
 					new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Registro Completado"));
+			this.categoria = new Categoria();
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, 
 					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
