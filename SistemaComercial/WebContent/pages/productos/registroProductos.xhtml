@@ -20,7 +20,7 @@
 		<p:toolbar style="margin-top:20px">
 			<p:toolbarGroup>
 				<p:button value="Nuevo" outcome="/pages/productos/registroProductos.xhtml" />
-				<p:commandButton value="Guardar" id="btnGuardar" action="#{registroProductoMB.guardar}" />
+				<p:commandButton value="Guardar" id="btnGuardar" actionListener="#{registroProductoMB.registrar()}" />
 			</p:toolbarGroup>
 			<p:toolbarGroup align="right">
 				<p:button value="Buscar" outcome="/pages/productos/busquedaProductos" />

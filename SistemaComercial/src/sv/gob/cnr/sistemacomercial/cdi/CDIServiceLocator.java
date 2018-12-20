@@ -11,8 +11,8 @@ import javax.naming.NamingException;
 public class CDIServiceLocator {
 	private static BeanManager getBeanManager(){
 		try {
-			InitialContext inititalContext = new InitialContext();
-			return (BeanManager) inititalContext.lookup("java:comp/env/BeanManager");
+			InitialContext initialContext = new InitialContext();
+			return (BeanManager) initialContext.lookup("java:comp/env/BeanManager");
 			
 		} catch (NamingException e) {
 			throw new RuntimeException("No puede encontrar BeanManager con JNDI");

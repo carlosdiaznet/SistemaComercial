@@ -7,6 +7,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 
+//import sv.gob.cnr.sistemacomercial.cdi.CDIServiceLocator;
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
 

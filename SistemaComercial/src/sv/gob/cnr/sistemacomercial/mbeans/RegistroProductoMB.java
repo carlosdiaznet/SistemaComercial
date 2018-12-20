@@ -33,8 +33,8 @@ public class RegistroProductoMB implements Serializable {
 		listCategoria = caterorias.listar();
 	}
 	
-	public void guardar(){
-		System.out.println("Categoria seleccionada: ");
+	public void registrar(){
+		System.out.println("Categoria seleccionada: " + this.categoria.getDescripcion());
 	}
 
 	public Producto getProducto() {
