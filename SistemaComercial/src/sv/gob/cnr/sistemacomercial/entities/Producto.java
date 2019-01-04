@@ -15,10 +15,9 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import sv.gob.cnr.sistemacomercial.validation.SKU;
+//import sv.gob.cnr.sistemacomercial.validation.SKU;
 
 @Entity
 @Table(schema = "CURSO_JSF04", name="SC_PRODUCTO")
@@ -34,31 +33,44 @@ public class Producto implements Serializable {
 	@Column(name="ID_PRODUCTO")
 	private Long id;
 	
-	//@NotNull
+	
 	//@SKU
 	@Column(name="SKU", nullable=false, length=20, unique=true)
 	private String sku;
 	
-	//@NotNull
+	
 	@Size(max=80)
 	@Column(name="NOMBRE", nullable=false, length=80)
 	private String nombre;
 	
-	//@NotNull
+	
 	@Column(name="VALOR_UNITARIO", nullable=false, precision=10, scale=2)
 	private BigDecimal valorUnitario;
 	
-	//@NotNull @Min(0) @Max(9999)
+	@Min(0) @Max(9999)
 	@Column(name="INVENTARIO")
 	private Integer inventario;
 	
-	@NotNull
 	@ManyToOne
 	@JoinColumn(name="ID_CATEGORIA", nullable=false)
 	private Categoria categoria;
 	
-	
-	
+	public Producto() {
+		
+	}
+
+	public Producto(Long id, String sku, String nombre, BigDecimal valorUnitario, Integer inventario,
+			Categoria categoria) {
+		super();
+		this.id = id;
+		this.sku = sku;
+		this.nombre = nombre;
+		this.valorUnitario = valorUnitario;
+		this.inventario = inventario;
+		this.categoria = categoria;
+		setCategoria(categoria);
+	}
+		
 	public Long getId() {
 		return id;
 	}
