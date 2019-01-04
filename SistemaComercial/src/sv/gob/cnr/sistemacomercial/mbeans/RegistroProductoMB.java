@@ -3,9 +3,12 @@ package sv.gob.cnr.sistemacomercial.mbeans;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
+
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.entities.Producto;
 import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
@@ -24,19 +27,25 @@ public class RegistroProductoMB implements Serializable {
 	
 	private List<Categoria> listCategoria;
 	
-	public RegistroProductoMB(){
+	@PostConstruct
+	public void init(){
 		producto = new Producto();
+		
 	}
-	
+
 	public void inicializar(){
-		System.out.println("Inicializando lista...");
 		listCategoria = caterorias.listar();
 	}
 	
-	public void registrar(){
-		System.out.println("Categoria seleccionada: " + this.categoria.getDescripcion());
+	public void guardar() throws Exception{
+		try {
+			System.out.println("guardado");
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
-
+	
 	public Producto getProducto() {
 		return producto;
 	}
@@ -48,7 +57,8 @@ public class RegistroProductoMB implements Serializable {
 	public List<Categoria> getListCategoria() {
 		return listCategoria;
 	}
-
+	
+	@NotNull
 	public Categoria getCategoria() {
 		return categoria;
 	}
