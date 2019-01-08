@@ -19,6 +19,29 @@ public class RegistroProductoMB implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	private Producto producto;
+	
+	private List<Categoria> listCategoria;
+	
+	@PostConstruct
+	public void init(){
+		this.producto = new Producto();
+		
+	}
+
+	public Producto getProducto() {
+		return producto;
+	}
+
+	public void setProducto(Producto producto) {
+		this.producto = producto;
+	}
+	
+	public List<Categoria> getListCategoria() {
+		return listCategoria;
+	}
+	
+	/*
 	@Inject
 	private CategoriaRepository caterorias;
 	
@@ -66,6 +89,6 @@ public class RegistroProductoMB implements Serializable {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-	
+	*/
 	
 }
