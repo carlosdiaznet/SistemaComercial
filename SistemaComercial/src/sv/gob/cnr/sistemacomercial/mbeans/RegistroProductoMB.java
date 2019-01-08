@@ -41,6 +41,7 @@ public class RegistroProductoMB implements Serializable {
 		return listCategoria;
 	}
 	
+	
 	/*
 	@Inject
 	private CategoriaRepository caterorias;
