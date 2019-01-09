@@ -1,17 +1,17 @@
 package sv.gob.cnr.sistemacomercial.mbeans;
 
 import java.io.Serializable;
-import java.util.List;
+//import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
+//import javax.inject.Inject;
+//import javax.validation.constraints.NotNull;
 
-import sv.gob.cnr.sistemacomercial.entities.Categoria;
+//import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.entities.Producto;
-import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
+//import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
 
 @ManagedBean(name = "registroProductoMB")
 @ViewScoped
@@ -21,7 +21,7 @@ public class RegistroProductoMB implements Serializable {
 	
 	private Producto producto;
 	
-	private List<Categoria> listCategoria;
+	
 	
 	@PostConstruct
 	public void init(){
@@ -37,8 +37,17 @@ public class RegistroProductoMB implements Serializable {
 		this.producto = producto;
 	}
 	
-	public List<Categoria> getListCategoria() {
-		return listCategoria;
+	public void guardar() throws Exception{
+		try {
+			System.out.println("guardado");
+			System.out.println("SKU: " + producto.getSku());
+			System.out.println("Nombre: " + producto.getNombre());
+			System.out.println("Valor unitario: " + producto.getValorUnitario());
+			System.out.println("Inventario: " + producto.getInventario());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	}
 	
 	

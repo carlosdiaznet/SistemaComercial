@@ -2,15 +2,18 @@ package sv.gob.cnr.sistemacomercial.mbeans;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 import sv.gob.cnr.sistemacomercial.controller.CategoriaController;
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
+import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
 
 @ManagedBean(name = "categoriaMB")
 @ViewScoped
@@ -19,7 +22,10 @@ public class CategoriaMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Categoria categoria;
+	private List<Categoria> listCategoria;
 	
+	@Inject
+	private CategoriaRepository caterorias;
 	
 
 	@PostConstruct
@@ -35,6 +41,13 @@ public class CategoriaMB implements Serializable {
 		this.categoria = categoria;
 	}
 	
+	public void inicializar(){
+		listCategoria = caterorias.listar();
+	}
+	
+	public List<Categoria> getListCategoria() {
+		return listCategoria;
+	}
 	
 	public String clear(){
 		

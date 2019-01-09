@@ -12,7 +12,7 @@
 	<div class="contenedor-main">
 	<f:metadata>
 		<f:param name="vista" />
-		<f:event listener="#{registroProductoMB.inicializar}" type="preRenderView" />
+		<f:event listener="#{categoriaMB.inicializar}" type="preRenderView" />
 	</f:metadata>
 	<h:form id="frmProducto">
 		<h1>Nuevo Producto</h1>
@@ -39,17 +39,13 @@
 				value="#{registroProductoMB.producto.nombre}" />
 			
 			<p:outputLabel value="Categoria" for="categoria" />
-			<p:selectOneMenu id="categoria" value="#{registroProductoMB.categoria}" 
-				converter="categoriaConverter">
-				<f:selectItem itemLabel="Seleccione una categoria" />
-				<f:selectItems value="#{registroProductoMB.listCategoria}" var="categoria"
+			<p:selectOneMenu id="categoria">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}" />
+				<f:selectItems value="#{categoriaMB.listCategoria}" var="categoria"
 					itemValue="#{categoria}" itemLabel="#{categoria.nombre}" />
 			</p:selectOneMenu>
 			
-			<p:outputLabel value="Subcategoria" for="subcategoria" />
-			<p:selectOneMenu id="subcategoria" value="#{registroProductoMB.producto.categoria}">
-				<f:selectItem itemLabel="Seleccione una subcategoria" />
-			</p:selectOneMenu>
+	
 			
 			<p:outputLabel value="Valor unitario" for="valorUnitario" />
 			<p:inputText id="valorUnitario" size="10" maxlength="10"
