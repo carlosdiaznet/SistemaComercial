@@ -39,7 +39,8 @@
 				value="#{registroProductoMB.producto.nombre}" />
 			
 			<p:outputLabel value="Categoria" for="categoria" />
-			<p:selectOneMenu id="categoria">
+			<p:selectOneMenu id="categoria" value="#{registroProductoMB.producto.categoria}"
+				converter="categoriaConverter">
 				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}" />
 				<f:selectItems value="#{categoriaMB.listCategoria}" var="categoria"
 					itemValue="#{categoria}" itemLabel="#{categoria.nombre}" />

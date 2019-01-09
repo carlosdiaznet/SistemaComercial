@@ -14,8 +14,9 @@ import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
 @FacesConverter(value="categoriaConverter", forClass= Categoria.class)
 public class CategoriaConverter implements Converter {
 	
-	@Inject
-	private CategoriaRepository categorias;
+	
+	//@Inject
+	private CategoriaRepository categorias = new CategoriaRepository();
 	
 	
 /*

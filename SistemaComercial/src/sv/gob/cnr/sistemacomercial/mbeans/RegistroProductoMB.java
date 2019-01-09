@@ -44,6 +44,7 @@ public class RegistroProductoMB implements Serializable {
 			System.out.println("Nombre: " + producto.getNombre());
 			System.out.println("Valor unitario: " + producto.getValorUnitario());
 			System.out.println("Inventario: " + producto.getInventario());
+			System.out.println("Categoria: " + producto.getCategoria());
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
