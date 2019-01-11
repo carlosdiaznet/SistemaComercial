@@ -1,6 +1,7 @@
 package sv.gob.cnr.sistemacomercial.converter;
 
 
+import javax.annotation.PostConstruct;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -14,19 +15,26 @@ import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
 //@FacesConverter(value="categoriaConverter", forClass= Categoria.class)
 @FacesConverter("categoriaConverter")
 public class CategoriaConverter implements Converter {
+	
+
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
 		Categoria objCategoria = null;
-		CategoriaRepository categoriaId = new CategoriaRepository();
+		
 		
 		if(value != null){
 			Long id = null;
 			try {
 				System.out.println("es de tipo String: " + value);
-				id = Long.valueOf(value);
 				System.out.println(value);
+				id = Long.valueOf(value);
+				
+				CategoriaRepository categoriaId = new CategoriaRepository();
+				
 				objCategoria = categoriaId.byId(id);
+				
+				System.out.println("Asigna el ID" + objCategoria);
 			} catch (NumberFormatException e) {
 				// TODO: handle exception
 			}
