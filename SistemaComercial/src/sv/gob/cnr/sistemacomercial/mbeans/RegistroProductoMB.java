@@ -6,12 +6,7 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-//import javax.inject.Inject;
-//import javax.validation.constraints.NotNull;
-
-//import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.entities.Producto;
-//import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
 
 @ManagedBean(name = "registroProductoMB")
 @ViewScoped
@@ -20,6 +15,7 @@ public class RegistroProductoMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Producto producto;
+	
 	
 	
 	
@@ -39,6 +35,7 @@ public class RegistroProductoMB implements Serializable {
 	
 	public void guardar() throws Exception{
 		try {
+
 			System.out.println("guardado");
 			System.out.println("SKU: " + producto.getSku());
 			System.out.println("Nombre: " + producto.getNombre());
@@ -46,7 +43,7 @@ public class RegistroProductoMB implements Serializable {
 			System.out.println("Inventario: " + producto.getInventario());
 			System.out.println("Categoria: " + producto.getCategoria().getNombre());
 		} catch (Exception e) {
-			// TODO: handle exception
+
 		}
 		
 	} 

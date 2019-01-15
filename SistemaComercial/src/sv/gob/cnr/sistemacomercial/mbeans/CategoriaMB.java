@@ -22,10 +22,14 @@ public class CategoriaMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Categoria categoria;
+	
 	private List<Categoria> listCategoria;
 	
 	@Inject
 	private CategoriaRepository caterorias;
+	
+	@Inject
+	private CategoriaRepository cat;
 	
 
 	@PostConstruct
@@ -41,8 +45,15 @@ public class CategoriaMB implements Serializable {
 		this.categoria = categoria;
 	}
 	
+	public Categoria objCategoria(Long id){
+		return cat.byId(id);
+	}
+	
 	public void inicializar(){
-		listCategoria = caterorias.listar();
+		System.out.println("obtenido por ID: " + cat.byId((long) 1).getNombre());
+		
+		listCategoria = caterorias.listar();	
+		
 	}
 	
 	public List<Categoria> getListCategoria() {

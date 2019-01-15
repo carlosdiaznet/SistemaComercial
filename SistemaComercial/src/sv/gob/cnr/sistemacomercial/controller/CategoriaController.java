@@ -14,4 +14,11 @@ public class CategoriaController extends SystemController {
 			transaccion.commit();
 	}
 	
+/*	public Categoria busquedaPorId(Long ctga){
+		transaccion.begin();
+		em.find(Categoria.class, ctga);
+		return 
+		transaccion.commit();
+	}*/
+	
 }
