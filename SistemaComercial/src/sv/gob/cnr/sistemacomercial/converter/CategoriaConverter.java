@@ -6,8 +6,10 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
+
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
+
 
 @FacesConverter("categoriaConverter")
 public class CategoriaConverter implements Converter {
