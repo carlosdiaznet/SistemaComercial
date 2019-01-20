@@ -14,35 +14,62 @@ import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
 @FacesConverter("categoriaConverter")
 public class CategoriaConverter implements Converter {
 
+	CategoriaRepository mbean;
 
 	@Override
-	public Object getAsObject(FacesContext context, UIComponent component, String value) {	
-		if(value != null){
-			Long id = null;
-			try {
-
-				id = Long.valueOf(value);
-				System.out.println("Es de tipo long: " + id);
-				CategoriaRepository repository = new CategoriaRepository();
-				
-				return repository.byId(id);
-
-			} catch (Exception e) {
-	
+	public Object getAsObject(FacesContext context, UIComponent component, String value) {
+		
+		try {
+			long id = 0;
+			Categoria registro;
+			if(value.trim().equals("")){
+				return null;
+			} else {
+				try {
+					id = Long.parseLong(value);
+				} catch (Exception e) {
+					return null;
+				}
+				registro = (Categoria) getMbean().byId(id);
+				return registro;
 			}
-			
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		return null;
+		return null;	
 	}
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
 		//System.out.println("es de tipo Object: " +  value);
-		if(value != null){
-			return ((Categoria) value).getId().toString();
+		try {
+			if(value != null && value.getClass().equals(Categoria.class)){
+				//return ((Categoria) value).getId().toString();
+				return String.valueOf(((Categoria) value).getId());
+			}
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
 		}
-		return ""; 
+		
+	
+	}
+
+	public CategoriaRepository getMbean() {
+		return mbean;
+	}
+
+	public void setMbean(CategoriaRepository mbean) {
+		this.mbean = mbean;
 	}
 
 
 }
+/**A1
+					//System.out.println("Es de tipo long: " + id);
+					//CategoriaRepository repository = new CategoriaRepository();
+					
+					//return repository.byId(id);
+
+*/
