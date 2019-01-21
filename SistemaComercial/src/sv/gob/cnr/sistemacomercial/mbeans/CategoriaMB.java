@@ -50,8 +50,6 @@ public class CategoriaMB implements Serializable {
 	}
 	
 	public void inicializar(){
-		System.out.println("obtenido por ID: " + cat.byId((long) 1).getNombre());
-		
 		listCategoria = caterorias.listar();	
 		
 	}

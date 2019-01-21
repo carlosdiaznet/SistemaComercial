@@ -18,33 +18,17 @@ public class CategoriaConverter implements Converter {
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
-		
-		try {
-			long id = 0;
-			Categoria registro;
-			if(value.trim().equals("")){
-				return null;
-			} else {
-				try {
-					id = Long.parseLong(value);
-				} catch (Exception e) {
-					return null;
-				}
-				registro = (Categoria) getMbean().byId(id);
-				return registro;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return null;	
+		long id = 0;
+		Categoria registro;
+		id = Long.parseLong(value);
+		registro = (Categoria) getMbean().byId(id);
+		return registro;	
 	}
 
 	@Override
 	public String getAsString(FacesContext context, UIComponent component, Object value) {
-		//System.out.println("es de tipo Object: " +  value);
 		try {
 			if(value != null && value.getClass().equals(Categoria.class)){
-				//return ((Categoria) value).getId().toString();
 				return String.valueOf(((Categoria) value).getId());
 			}
 			return null;
@@ -52,7 +36,6 @@ public class CategoriaConverter implements Converter {
 			e.printStackTrace();
 			return null;
 		}
-		
 	
 	}
 
@@ -63,13 +46,4 @@ public class CategoriaConverter implements Converter {
 	public void setMbean(CategoriaRepository mbean) {
 		this.mbean = mbean;
 	}
-
-
 }
-/**A1
-					//System.out.println("Es de tipo long: " + id);
-					//CategoriaRepository repository = new CategoriaRepository();
-					
-					//return repository.byId(id);
-
-*/
