@@ -17,7 +17,7 @@ import javax.validation.constraints.Pattern;
 public @interface SKU {
 	
 	@OverridesAttribute(constraint = Pattern.class, name = "message")
-	String message() default "Es formato invalido";
+	String message() default ": es formato invalido (Ej.: AA5555)";
 	
 	Class<?>[] groups() default {};
 	

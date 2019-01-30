@@ -15,7 +15,12 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+import sv.gob.cnr.sistemacomercial.validation.SKU;
 
 //import sv.gob.cnr.sistemacomercial.validation.SKU;
 
@@ -34,23 +39,26 @@ public class Producto implements Serializable {
 	private Long id;
 	
 	
-	//@SKU
+	@SKU
+	@NotBlank
 	@Column(name="SKU", nullable=false, length=20, unique=true)
 	private String sku;
 	
-	
+	@NotBlank
 	@Size(max=80)
 	@Column(name="NOMBRE", nullable=false, length=80)
 	private String nombre;
 	
-	
+	@NotNull(message = "es necesario...")
 	@Column(name="VALOR_UNITARIO", nullable=false, precision=10, scale=2)
 	private BigDecimal valorUnitario;
 	
-	@Min(0) @Max(9999)
+	@NotNull(message = "es obligatorio...")
+	@Min(value = 0, message = "no puede ser negativo") @Max(value=9999, message = "es un valor muy alto")
 	@Column(name="INVENTARIO")
 	private Integer inventario;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name="ID_CATEGORIA", nullable=false)
 	private Categoria categoria;
