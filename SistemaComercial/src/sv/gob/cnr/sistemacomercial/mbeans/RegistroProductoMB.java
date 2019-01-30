@@ -6,7 +6,10 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+
+import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.entities.Producto;
+import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
 
 @ManagedBean(name = "registroProductoMB")
 @ViewScoped
@@ -15,11 +18,12 @@ public class RegistroProductoMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Producto producto;
+	private CategoriaRepository repository;
 		
 	@PostConstruct
 	public void init(){
 		this.producto = new Producto();
-		
+				
 	}
 
 	public Producto getProducto() {
@@ -38,5 +42,13 @@ public class RegistroProductoMB implements Serializable {
 		}
 		
 	} 
+	
+	public Categoria getCategoria(Long id){
+		if(id == null){
+			throw new IllegalArgumentException("Id no ingresado");
+		}
+		this.repository = new CategoriaRepository();
+		return repository.byId(id);
+	}
 	
 }
