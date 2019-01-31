@@ -15,14 +15,12 @@ public class EntityManagerProducer {
 	
 	//Constructor
 	public EntityManagerProducer() {
-		System.out.println("inicia el factory...");
 		this.factory = Persistence.createEntityManagerFactory("siscomPU");
 	}
 	
 	@Produces
 	@RequestScoped
 	public EntityManager createEntityManager(){
-		System.out.println("Inicia el productor...");
 		return this.factory.createEntityManager();
 	}
 	
