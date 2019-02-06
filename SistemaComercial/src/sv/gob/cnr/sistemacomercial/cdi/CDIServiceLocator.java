@@ -12,7 +12,7 @@ public class CDIServiceLocator {
 	private static BeanManager getBeanManager(){
 		try {
 			InitialContext initialContext = new InitialContext();
-			return (BeanManager) initialContext.lookup("java:comp/env/BeanManager");
+			return (BeanManager) initialContext.lookup("java:comp/BeanManager");
 			
 		} catch (NamingException e) {
 			throw new RuntimeException("No puede encontrar BeanManager con JNDI");

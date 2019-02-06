@@ -36,6 +36,9 @@ public class Categoria implements Serializable {
 	@Column(name="DESCRIPCION", nullable=true, length=200)
 	private String descripcion;
 	
+	@Column(name="CATEGORIA_PADRE", nullable=true, length=50)
+	private Long categoriaPadre;
+	
 	@OneToMany(mappedBy="categoria", cascade = CascadeType.ALL)
 	List<Producto> productos = new ArrayList<Producto>();
 	
@@ -57,6 +60,13 @@ public class Categoria implements Serializable {
 	}
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	public Long getCategoriaPadre() {
+		return categoriaPadre;
+	}
+	public void setCategoriaPadre(Long categoriaPadre) {
+		this.categoriaPadre = categoriaPadre;
 	}
 	
 	@Override
