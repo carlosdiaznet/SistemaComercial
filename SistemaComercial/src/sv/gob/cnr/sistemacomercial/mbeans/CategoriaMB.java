@@ -14,6 +14,7 @@ import javax.inject.Inject;
 import sv.gob.cnr.sistemacomercial.controller.CategoriaController;
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
+import sv.gob.cnr.sistemacomercial.util.FacesUtil;
 
 @ManagedBean(name = "categoriaMB")
 @ViewScoped
@@ -50,6 +51,8 @@ public class CategoriaMB implements Serializable {
 	}
 	
 	public void inicializar(){
+		System.out.println("inicializar...");
+		
 		listCategoria = caterorias.listar();	
 		
 	}
