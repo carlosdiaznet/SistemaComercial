@@ -50,11 +50,26 @@ public class CategoriaMB implements Serializable {
 		return cat.byId(id);
 	}
 	
-	public void inicializar(){
-		System.out.println("inicializar...");
+	public void inicializar(String valor) throws Exception{
+		try {
+			if(valor.equals("F")){
+				if(isPostback() == false){
+					listCategoria = caterorias.listar();
+				}
+			} else {
+				listCategoria = caterorias.listar();
+			}
+			
+		} catch (Exception e) {
+			throw e;
+		}
 		
-		listCategoria = caterorias.listar();	
+			
 		
+	}
+	
+	private boolean isPostback(){
+		return FacesContext.getCurrentInstance().isPostback();
 	}
 	
 	public List<Categoria> getListCategoria() {

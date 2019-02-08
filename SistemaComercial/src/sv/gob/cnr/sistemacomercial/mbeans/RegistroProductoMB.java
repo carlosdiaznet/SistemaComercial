@@ -6,6 +6,7 @@ import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.entities.Producto;
@@ -18,6 +19,7 @@ public class RegistroProductoMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Producto producto;
+	private Categoria categoria;
 	private CategoriaRepository repository;
 		
 	@PostConstruct
@@ -34,21 +36,35 @@ public class RegistroProductoMB implements Serializable {
 		this.producto = producto;
 	}
 	
+	
+	
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	public void guardar() throws Exception{
 		try {
-			System.out.println("Categoria: " + producto.getCategoria().getNombre());
+			System.out.println("Categoria: " + this.categoria.getNombre());
 		} catch (Exception e) {
 
 		}
 		
 	} 
 	
-	public Categoria getCategoria(Long id){
+	private boolean isPostback(){
+		return FacesContext.getCurrentInstance().isPostback();
+	}
+	
+/*	public Categoria getCategoria(Long id){
 		if(id == null){
 			throw new IllegalArgumentException("Id no ingresado");
 		}
 		this.repository = new CategoriaRepository();
 		return repository.byId(id);
-	}
+	}*/
 	
 }

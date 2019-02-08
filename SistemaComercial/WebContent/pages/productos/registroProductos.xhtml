@@ -12,7 +12,7 @@
 	<div class="contenedor-main">
 	<f:metadata>
 		<f:param name="vista" />
-		<f:event listener="#{categoriaMB.inicializar}" type="preRenderView" />
+		<f:event listener="#{categoriaMB.inicializar('F')}" type="preRenderView" />
 	</f:metadata>
 	<h:form id="frmProducto">
 		<h1>Nuevo Producto</h1>
@@ -39,19 +39,14 @@
 				value="#{registroProductoMB.producto.nombre}" />
 			
 			<p:outputLabel value="Categoria" for="categoria" />
-			<p:selectOneMenu id="categoria" value="#{registroProductoMB.producto.categoria}" 
+			<p:selectOneMenu id="categoria" value="#{registroProductoMB.categoria}" 
 				converter="categoryConverter">
 				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}" />
 				<f:selectItems value="#{categoriaMB.listCategoria}" var="categoria"
 					itemValue="#{categoria}" itemLabel="#{categoria.nombre}" />
 			</p:selectOneMenu>
 			
-			<p:outputLabel value="Subcategoria" for="subCategoria" />
-			<p:selectOneMenu id="subCategoria" value="#{}">
-				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}" />
-				<f:selectItems value="#{categoriaMB.subCategoria}" var="subcategoria"
-					itemValue="#{subcategoria}" itemLabel="#{subcategoria.nombre}" />
-			</p:selectOneMenu>
+			
 			
 			<p:outputLabel value="Valor unitario" for="valorUnitario" />
 			<p:inputText id="valorUnitario" size="10" maxlength="10"
