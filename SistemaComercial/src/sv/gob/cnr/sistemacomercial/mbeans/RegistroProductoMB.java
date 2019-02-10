@@ -2,6 +2,7 @@ package sv.gob.cnr.sistemacomercial.mbeans;
 
 import java.io.Serializable;
 //import java.util.List;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
@@ -21,6 +22,8 @@ public class RegistroProductoMB implements Serializable {
 	private Producto producto;
 	private Categoria categoria;
 	private CategoriaRepository repository;
+	
+	private List<Categoria> subCategoria;
 		
 	@PostConstruct
 	public void init(){
@@ -45,10 +48,21 @@ public class RegistroProductoMB implements Serializable {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+	
+	public void loadSubcategorias(){
+		subCategoria = repository.subCategorias(categoria);
+	}
+	
+	
+
+	public List<Categoria> getSubCategoria() {
+		return subCategoria;
+	}
 
 	public void guardar() throws Exception{
 		try {
 			System.out.println("Categoria: " + this.categoria.getNombre());
+			System.out.println("SubCategoria: " + this.producto.getCategoria().getNombre());
 		} catch (Exception e) {
 
 		}

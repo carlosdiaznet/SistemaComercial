@@ -44,9 +44,15 @@
 				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}" />
 				<f:selectItems value="#{categoriaMB.listCategoria}" var="categoria"
 					itemValue="#{categoria}" itemLabel="#{categoria.nombre}" />
+				<p:ajax listener="#{registroProductoMB.loadSubcategorias}" update="subCategoria" />
 			</p:selectOneMenu>
 			
-			
+			<p:outputLabel value="Subcategoria" for="subCategoria" />
+			<p:selectOneMenu id="subCategoria" value="#{registroProductoMB.producto.categoria}">
+				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}" />
+				<f:selectItems value="#{registroProductoMB.subCategoria}" var="subcategoria"
+					itemValue="#{subcategoria}" itemLabel="#{subcategoria.nombre}" />
+			</p:selectOneMenu>
 			
 			<p:outputLabel value="Valor unitario" for="valorUnitario" />
 			<p:inputText id="valorUnitario" size="10" maxlength="10"

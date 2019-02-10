@@ -19,6 +19,11 @@ public class CategoriaRepository implements Serializable {
 		return manager.createQuery("select c from Categoria c where c.categoriaPadre IS NULL", Categoria.class).getResultList();
 	}
 	
+	public List<Categoria> subCategorias(Categoria categoriaP){
+		return manager.createQuery("select c from Categoria c where c.categoriaPadre = :raiz",
+				Categoria.class).setParameter("raiz", categoriaP).getResultList();
+	}
+	
 	//Metodo para buscar por id dentro de la lista Resullist
 	public Categoria byId(Long id){
 		return manager.find(Categoria.class, id);

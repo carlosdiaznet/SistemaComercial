@@ -25,6 +25,7 @@ public class CategoriaMB implements Serializable {
 	private Categoria categoria;
 	
 	private List<Categoria> listCategoria;
+	private List<Categoria> subCategoria;
 	
 	@Inject
 	private CategoriaRepository caterorias;
@@ -68,6 +69,8 @@ public class CategoriaMB implements Serializable {
 		
 	}
 	
+	
+	
 	private boolean isPostback(){
 		return FacesContext.getCurrentInstance().isPostback();
 	}
@@ -76,6 +79,12 @@ public class CategoriaMB implements Serializable {
 		return listCategoria;
 	}
 	
+	
+	
+	public List<Categoria> getSubCategoria() {
+		return subCategoria;
+	}
+
 	public String clear(){
 		
 		return "registroCategoria.xhtml?faces-redirect=true";
