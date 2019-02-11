@@ -12,11 +12,12 @@
 	<div class="contenedor-main">
 	<f:metadata>
 		<f:param name="vista" />
-		<f:event listener="#{categoriaMB.inicializar('F')}" type="preRenderView" />
+		<f:event listener="#{registroProductoMB.inicializar('F')}" type="preRenderView" />
 	</f:metadata>
 	<h:form id="frmProducto">
 		<h1>Nuevo Producto</h1>
-		<p:messages autoUpdate="true" closable="true" />
+		<p:growl id="mensaje" autoUpdate="false" severity="info, fatal" closable="true" 
+			showSummary="true" showDetail="true" />
 		<p:toolbar style="margin-top:20px">
 			<p:toolbarGroup>
 				<p:button value="Nuevo" outcome="/pages/productos/registroProductos.xhtml" />
@@ -42,13 +43,14 @@
 			<p:selectOneMenu id="categoria" value="#{registroProductoMB.categoria}" 
 				converter="categoryConverter">
 				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}" />
-				<f:selectItems value="#{categoriaMB.listCategoria}" var="categoria"
+				<f:selectItems value="#{registroProductoMB.listCategoria}" var="categoria"
 					itemValue="#{categoria}" itemLabel="#{categoria.nombre}" />
 				<p:ajax listener="#{registroProductoMB.loadSubcategorias}" update="subCategoria" />
 			</p:selectOneMenu>
 			
 			<p:outputLabel value="Subcategoria" for="subCategoria" />
-			<p:selectOneMenu id="subCategoria" value="#{registroProductoMB.producto.categoria}">
+			<p:selectOneMenu id="subCategoria" value="#{registroProductoMB.producto.categoria}"
+				converter="categoryConverter">
 				<f:selectItem noSelectionOption="true" itemLabel="Seleccione..." itemValue="#{null}" />
 				<f:selectItems value="#{registroProductoMB.subCategoria}" var="subcategoria"
 					itemValue="#{subcategoria}" itemLabel="#{subcategoria.nombre}" />

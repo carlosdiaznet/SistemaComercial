@@ -1,14 +1,18 @@
 package sv.gob.cnr.sistemacomercial.mbeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 //import java.util.List;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
+import sv.gob.cnr.sistemacomercial.controller.ProductoController;
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.entities.Producto;
 import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
@@ -21,15 +25,62 @@ public class RegistroProductoMB implements Serializable {
 	
 	private Producto producto;
 	private Categoria categoria;
-	private CategoriaRepository repository;
 	
+	@Inject
+	private CategoriaRepository caterorias;
+	
+	private List<Categoria> listCategoria;
 	private List<Categoria> subCategoria;
 		
 	@PostConstruct
 	public void init(){
-		this.producto = new Producto();
-				
+		this.producto = new Producto();	
 	}
+	
+	public void inicializar(String valor) throws Exception{
+		try {
+			if(valor.equals("F")){
+				if(isPostback() == false){ listCategoria = caterorias.listar(); }
+			} else {
+				listCategoria = caterorias.listar();
+			}
+		} catch (Exception e) {
+			throw e;
+		}	
+	}
+	
+	private boolean isPostback(){
+		return FacesContext.getCurrentInstance().isPostback();
+	}
+	
+	public void guardar() throws Exception{
+		ProductoController reg;
+		try {
+			reg = new ProductoController();
+			reg.registrarProducto(producto);
+			System.out.println("Categoria: " + this.categoria.getNombre());
+			System.out.println("SubCategoria: " + this.producto.getCategoria().getNombre());
+			limpiar();
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Registro Completado"));
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, 
+					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
+			throw e;
+		}
+	}
+	
+	private void limpiar(){
+		producto = new Producto();
+		categoria = null;
+		subCategoria = new ArrayList<Categoria>();
+	}
+	
+	public void loadSubcategorias(){
+		subCategoria = caterorias.subCategorias(categoria);
+	}
+	
+	/*METODOS GET Y SET*/
 
 	public Producto getProducto() {
 		return producto;
@@ -39,8 +90,6 @@ public class RegistroProductoMB implements Serializable {
 		this.producto = producto;
 	}
 	
-	
-	
 	public Categoria getCategoria() {
 		return categoria;
 	}
@@ -49,36 +98,11 @@ public class RegistroProductoMB implements Serializable {
 		this.categoria = categoria;
 	}
 	
-	public void loadSubcategorias(){
-		subCategoria = repository.subCategorias(categoria);
+	public List<Categoria> getListCategoria() {
+		return listCategoria;
 	}
-	
-	
 
 	public List<Categoria> getSubCategoria() {
 		return subCategoria;
 	}
-
-	public void guardar() throws Exception{
-		try {
-			System.out.println("Categoria: " + this.categoria.getNombre());
-			System.out.println("SubCategoria: " + this.producto.getCategoria().getNombre());
-		} catch (Exception e) {
-
-		}
-		
-	} 
-	
-	private boolean isPostback(){
-		return FacesContext.getCurrentInstance().isPostback();
-	}
-	
-/*	public Categoria getCategoria(Long id){
-		if(id == null){
-			throw new IllegalArgumentException("Id no ingresado");
-		}
-		this.repository = new CategoriaRepository();
-		return repository.byId(id);
-	}*/
-	
 }

@@ -14,7 +14,6 @@ import javax.inject.Inject;
 import sv.gob.cnr.sistemacomercial.controller.CategoriaController;
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
-import sv.gob.cnr.sistemacomercial.util.FacesUtil;
 
 @ManagedBean(name = "categoriaMB")
 @ViewScoped
@@ -23,12 +22,6 @@ public class CategoriaMB implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	private Categoria categoria;
-	
-	private List<Categoria> listCategoria;
-	private List<Categoria> subCategoria;
-	
-	@Inject
-	private CategoriaRepository caterorias;
 	
 	@Inject
 	private CategoriaRepository cat;
@@ -51,42 +44,7 @@ public class CategoriaMB implements Serializable {
 		return cat.byId(id);
 	}
 	
-	public void inicializar(String valor) throws Exception{
-		try {
-			if(valor.equals("F")){
-				if(isPostback() == false){
-					listCategoria = caterorias.listar();
-				}
-			} else {
-				listCategoria = caterorias.listar();
-			}
-			
-		} catch (Exception e) {
-			throw e;
-		}
-		
-			
-		
-	}
-	
-	
-	
-	private boolean isPostback(){
-		return FacesContext.getCurrentInstance().isPostback();
-	}
-	
-	public List<Categoria> getListCategoria() {
-		return listCategoria;
-	}
-	
-	
-	
-	public List<Categoria> getSubCategoria() {
-		return subCategoria;
-	}
-
 	public String clear(){
-		
 		return "registroCategoria.xhtml?faces-redirect=true";
 	}
 	
