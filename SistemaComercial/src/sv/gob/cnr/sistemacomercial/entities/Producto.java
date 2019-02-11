@@ -22,8 +22,6 @@ import org.hibernate.validator.constraints.NotBlank;
 
 import sv.gob.cnr.sistemacomercial.validation.SKU;
 
-//import sv.gob.cnr.sistemacomercial.validation.SKU;
-
 @Entity
 @Table(schema = "CURSO_JSF04", name="SC_PRODUCTO")
 @NamedQuery(name="Producto.findAll", query="SELECT a FROM Producto a")
