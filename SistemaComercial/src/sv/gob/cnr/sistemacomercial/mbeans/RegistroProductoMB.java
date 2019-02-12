@@ -16,6 +16,7 @@ import sv.gob.cnr.sistemacomercial.controller.ProductoController;
 import sv.gob.cnr.sistemacomercial.entities.Categoria;
 import sv.gob.cnr.sistemacomercial.entities.Producto;
 import sv.gob.cnr.sistemacomercial.repositories.CategoriaRepository;
+import sv.gob.cnr.sistemacomercial.repositories.ProductoRepository;
 
 @ManagedBean(name = "registroProductoMB")
 @ViewScoped
@@ -28,6 +29,9 @@ public class RegistroProductoMB implements Serializable {
 	
 	@Inject
 	private CategoriaRepository caterorias;
+	
+	@Inject
+	private ProductoRepository productos;
 	
 	private List<Categoria> listCategoria;
 	private List<Categoria> subCategoria;
@@ -55,17 +59,17 @@ public class RegistroProductoMB implements Serializable {
 	
 	public void guardar() throws Exception{
 		ProductoController reg;
+		
 		try {
+			if(productos.porSku(producto.getSku()) != null){
+				
+			}
 			reg = new ProductoController();
 			reg.registrarProducto(producto);
-			System.out.println("Categoria: " + this.categoria.getNombre());
-			System.out.println("SubCategoria: " + this.producto.getCategoria().getNombre());
 			limpiar();
-			FacesContext.getCurrentInstance().addMessage(null, 
-					new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Registro Completado"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Registro Completado"));
 		} catch (Exception e) {
-			FacesContext.getCurrentInstance().addMessage(null, 
-					new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
 			throw e;
 		}
 	}

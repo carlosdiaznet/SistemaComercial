@@ -13,4 +13,6 @@ public class ProductoController extends SystemController{
 			em.persist(producto);
 		transaccion.commit();
 	}
+	
+
 }
