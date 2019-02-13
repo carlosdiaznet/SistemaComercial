@@ -61,13 +61,14 @@ public class RegistroProductoMB implements Serializable {
 		ProductoController reg;
 		
 		try {
-			if(productos.porSku(producto.getSku()) != null){
-				
+			if(productos.porSku(producto.getSku()) == null){
+				reg = new ProductoController();
+				reg.registrarProducto(producto);
+				limpiar();
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Registro Completado"));
+			} else {
+				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "SKU ya existe en la DB"));
 			}
-			reg = new ProductoController();
-			reg.registrarProducto(producto);
-			limpiar();
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Registro Completado"));
 		} catch (Exception e) {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
 			throw e;

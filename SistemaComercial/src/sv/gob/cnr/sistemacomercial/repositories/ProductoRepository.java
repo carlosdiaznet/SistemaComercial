@@ -17,7 +17,7 @@ public class ProductoRepository implements Serializable {
 	
 	public Producto porSku(String sku){
 		try {
-			return manager.createQuery("select p from Producto p where upper(sku) = :sku", Producto.class)
+			return manager.createQuery("select p from Producto p where upper(p.sku) = :sku", Producto.class)
 					.setParameter("sku", sku.toUpperCase()).getSingleResult();
 					
 		} catch (NoResultException e) {
