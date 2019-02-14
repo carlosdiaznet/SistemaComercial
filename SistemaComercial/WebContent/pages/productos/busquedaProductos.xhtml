@@ -8,6 +8,10 @@
 	<ui:define name="titulo">Busqueda de productos</ui:define>
 	
 	<ui:define name="contenido">
+	<f:metadata>
+		<f:param name="vista" />
+		<f:event listener="#{busquedaProductosMB.inicializar()}" type="preRenderView" />
+	</f:metadata>
 	<h:form>
 	<div class="contenedor-main">
 	<h1>Busqueda de Productos</h1>
@@ -33,19 +37,19 @@
 		style="margin-top: 20px" emptyMessage="Ningun producto encontrado." rows="20" paginator="true"
 		paginatorAlwaysVisible="false" paginatorPosition="bottom">
 			<p:column style="text-align:center; width: 100px;" headerText="SKU">
-				<h:outputText value="123" />
+				<h:outputText value="#{producto.sku}" />
 			</p:column>
 			<p:column headerText="Nombre">
-				<h:outputText value="Camisetas Sport" />
+				<h:outputText value="#{producto.nombre}" />
 			</p:column>
 			<p:column headerText="Categoria">
-				<h:outputText value="Ropa deportiva" />
+				<h:outputText value="#{producto.categoria.nombre}" />
 			</p:column>
 			<p:column headerText="Valor unitario" style="text-align: right; width: 120px">
-				<h:outputText value="US$ 12.25" />
+				<h:outputText value="#{producto.valorUnitario}" />
 			</p:column>
 			<p:column headerText="Inventario" style="text-align: center; width: 100px">
-				<h:outputText value="98" />
+				<h:outputText value="#{producto.inventario}" />
 			</p:column>
 			<p:column style="width: 100px; text-align: center;">
 				<p:button icon="ui-icon-pencil" title="Editar" />

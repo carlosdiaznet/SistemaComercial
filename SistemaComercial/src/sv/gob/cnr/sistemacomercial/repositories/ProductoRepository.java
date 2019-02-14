@@ -1,12 +1,14 @@
 package sv.gob.cnr.sistemacomercial.repositories;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
 import sv.gob.cnr.sistemacomercial.entities.Producto;
+import sv.gob.cnr.sistemacomercial.filter.ProductoFilter;
 
 public class ProductoRepository implements Serializable {
 
@@ -14,6 +16,14 @@ public class ProductoRepository implements Serializable {
 	
 	@Inject
 	private EntityManager manager;
+	
+	public List<Producto> listarProductos(){
+		return manager.createQuery("select p from Producto p", Producto.class).getResultList();
+	}
+	
+	public List<Producto> filtrados(ProductoFilter filtro){
+		return null;
+	}
 	
 	public Producto porSku(String sku){
 		try {
