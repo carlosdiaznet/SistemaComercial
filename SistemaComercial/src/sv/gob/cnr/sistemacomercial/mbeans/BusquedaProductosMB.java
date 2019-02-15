@@ -3,6 +3,7 @@ package sv.gob.cnr.sistemacomercial.mbeans;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
@@ -19,19 +20,12 @@ public class BusquedaProductosMB {
 	@Inject
 	private ProductoRepository productos;
 
+	@PostConstruct
 	public void init() {
 		this.productosFiltrados = new ArrayList<Producto>();
+		productosFiltrados = productos.listarProductos();
 	}
 	
-	public void inicializar() throws Exception {
-		try {
-			productosFiltrados = productos.listarProductos();
-		} catch (Exception e) {
-			throw e;
-		}
-		
-	}
-
 	public List<Producto> getProductosFiltrados() {
 		return productosFiltrados;
 	}
