@@ -1,5 +1,6 @@
 package sv.gob.cnr.sistemacomercial.mbeans;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,13 @@ import sv.gob.cnr.sistemacomercial.repositories.ProductoRepository;
 
 @ManagedBean(name="busquedaProductosMB")
 @RequestScoped
-public class BusquedaProductosMB {
-	
+public class BusquedaProductosMB implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
 	private List<Producto> productosFiltrados;
+	
+	private List<Producto> filteredProducts;
 	
 	@Inject
 	private ProductoRepository productos;
@@ -28,6 +33,14 @@ public class BusquedaProductosMB {
 	
 	public List<Producto> getProductosFiltrados() {
 		return productosFiltrados;
+	}
+
+	public List<Producto> getFilteredProducts() {
+		return filteredProducts;
+	}
+
+	public void setFilteredProducts(List<Producto> filteredProducts) {
+		this.filteredProducts = filteredProducts;
 	}
 	
 	
