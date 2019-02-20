@@ -10,6 +10,7 @@ import javax.faces.bean.RequestScoped;
 import javax.inject.Inject;
 
 import sv.gob.cnr.sistemacomercial.entities.Producto;
+import sv.gob.cnr.sistemacomercial.filter.ProductoFilter;
 import sv.gob.cnr.sistemacomercial.repositories.ProductoRepository;
 
 @ManagedBean(name="busquedaProductosMB")
@@ -24,11 +25,19 @@ public class BusquedaProductosMB implements Serializable {
 	
 	@Inject
 	private ProductoRepository productos;
+	
+	private ProductoFilter filtro;
 
 	@PostConstruct
 	public void init() {
 		this.productosFiltrados = new ArrayList<Producto>();
+		this.filtro = new ProductoFilter();
 		productosFiltrados = productos.listarProductos();
+		System.out.println(filtro);
+	}
+	
+	public void buscarProductos(){
+			productosFiltrados = productos.filtrados(filtro);
 	}
 	
 	public List<Producto> getProductosFiltrados() {
@@ -41,6 +50,10 @@ public class BusquedaProductosMB implements Serializable {
 
 	public void setFilteredProducts(List<Producto> filteredProducts) {
 		this.filteredProducts = filteredProducts;
+	}
+
+	public ProductoFilter getFiltro() {
+		return filtro;
 	}
 	
 	

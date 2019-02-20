@@ -25,9 +25,9 @@ public class ProductoRepository implements Serializable {
 	@SuppressWarnings("unchecked")
 	public List<Producto> filtrados(ProductoFilter filtro){
 		if(filtro.getSku() != null && filtro.getNombre() != null){
-			Query query = manager.createQuery("SELECT p FROM Producto p WHERE p.sku LIKE %:sku% OR p.nombre LIKE %:nombre%", Producto.class);
-				query.setParameter("sku", filtro.getSku());
-				query.setParameter("nombre", filtro.getNombre());
+			Query query = manager.createQuery("SELECT p FROM Producto p WHERE p.sku = ?1 OR p.nombre = ?2", Producto.class);
+				query.setParameter(1, filtro.getSku());
+				query.setParameter(2, filtro.getNombre());
 				return query.getResultList();
 		} else {
 			return null;

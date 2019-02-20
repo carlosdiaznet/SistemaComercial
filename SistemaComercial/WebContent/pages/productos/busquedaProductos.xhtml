@@ -12,10 +12,11 @@
 	<h:form>
 	<div class="contenedor-main">
 	<h1>Busqueda de Productos</h1>
-	
+	<p:messages autoUpdate="true" closable="true" />
 	<p:toolbar style="margin-top:20px">
 		<p:toolbarGroup>
-			<p:commandButton value="Buscar" />
+			<p:commandButton value="Buscar" action="#{busquedaProductosMB.buscarProductos()}"
+				update="@form" />
 		</p:toolbarGroup>
 		<p:toolbarGroup align="right">
 			<p:button value="Nuevo" outcome="/pages/productos/registroProductos.xhtml" />
@@ -24,10 +25,10 @@
 	
 	<p:panelGrid columns="2" id="panel" styleClass="panel-producto" columnClasses="rotulo, campo">
 		<p:outputLabel value="SKU" for="sku" />
-		<p:inputText id="sku" size="20" />
+		<p:inputText id="sku" size="20" value="#{busquedaProductosMB.filtro.sku}" />
 		
 		<p:outputLabel value="Nombre" for="nombre" />
-		<p:inputText id="nombre" size="60" />
+		<p:inputText id="nombre" size="60" value="#{busquedaProductosMB.filtro.nombre}" />
 	</p:panelGrid>
 	
 	<p:dataTable id="productosTabla" value="#{busquedaProductosMB.productosFiltrados}" var="producto"
