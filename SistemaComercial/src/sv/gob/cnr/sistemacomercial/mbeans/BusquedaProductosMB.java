@@ -33,7 +33,12 @@ public class BusquedaProductosMB implements Serializable {
 		this.productosFiltrados = new ArrayList<Producto>();
 		this.filtro = new ProductoFilter();
 		productosFiltrados = productos.listarProductos();
-		System.out.println(filtro);
+		
+	}
+	
+	public void limpiar(){
+		this.filtro = new ProductoFilter();
+		productosFiltrados = productos.listarProductos();
 	}
 	
 	public void buscarProductos(){

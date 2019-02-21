@@ -17,6 +17,8 @@
 		<p:toolbarGroup>
 			<p:commandButton value="Buscar" action="#{busquedaProductosMB.buscarProductos()}"
 				update="@form" />
+			<p:commandButton value="Limpiar" action="#{busquedaProductosMB.limpiar()}"
+				update="@form" />
 		</p:toolbarGroup>
 		<p:toolbarGroup align="right">
 			<p:button value="Nuevo" outcome="/pages/productos/registroProductos.xhtml" />
@@ -47,14 +49,16 @@
 			<p:column filterBy="#{producto.sku}" style="text-align:center; width: 100px;" headerText="SKU">
 				<h:outputText value="#{producto.sku}" />
 			</p:column>
-			<p:column filterBy="#{producto.nombre}" headerText="Nombre">
+			<p:column filterBy="#{producto.nombre}"  headerText="Nombre">
 				<h:outputText value="#{producto.nombre}" />
 			</p:column>
 			<p:column filterBy="#{producto.categoria.nombre}" headerText="Categoria">
 				<h:outputText value="#{producto.categoria.nombre}" />
 			</p:column>
 			<p:column filterBy="#{producto.valorUnitario}" headerText="Valor unitario" style="text-align: right; width: 120px">
-				<h:outputText value="#{producto.valorUnitario}" />
+				<h:outputText value="#{producto.valorUnitario}">
+					<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
+				</h:outputText>
 			</p:column>
 			<p:column filterBy="#{producto.inventario}" headerText="Inventario" style="text-align: center; width: 100px">
 				<h:outputText value="#{producto.inventario}" />
