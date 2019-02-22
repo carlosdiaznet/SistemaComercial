@@ -26,10 +26,9 @@
 	</p:toolbar>
 	
 	<p:panelGrid columns="2" id="panel" styleClass="panel-producto" columnClasses="rotulo, campo">
-		<p:outputLabel value="SKU" for="sku" />
-		<p:inputText id="sku" size="20" value="#{busquedaProductosMB.filtro.sku}" />
-		
-		<p:outputLabel value="Nombre" for="nombre" />
+		<p:outputLabel value="SKU:" for="sku" />
+		<p:inputText id="sku" size="30" value="#{busquedaProductosMB.filtro.sku}" />
+		<p:outputLabel value="Nombre:" for="nombre" />
 		<p:inputText id="nombre" size="60" value="#{busquedaProductosMB.filtro.nombre}" />
 	</p:panelGrid>
 	

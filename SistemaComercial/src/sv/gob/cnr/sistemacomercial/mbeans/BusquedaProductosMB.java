@@ -38,7 +38,6 @@ public class BusquedaProductosMB implements Serializable {
 	
 	public void limpiar(){
 		this.filtro = new ProductoFilter();
-		productosFiltrados = productos.listarProductos();
 	}
 	
 	public void buscarProductos(){
