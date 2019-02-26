@@ -63,7 +63,9 @@
 				<h:outputText value="#{producto.inventario}" />
 			</p:column>
 			<p:column style="width: 100px; text-align: center;">
-				<p:button icon="ui-icon-pencil" title="Editar" />
+				<p:button outcome="/pages/productos/registroProductos.xhtml" icon="ui-icon-pencil" title="Editar">
+					<f:param name="producto" value="#{producto.id}" />
+				</p:button>
 				<p:commandButton icon="ui-icon-trash" title="Eliminar" oncomplete="PF('confirmacionEliminar').show();" />
 			</p:column>
 	</p:dataTable>

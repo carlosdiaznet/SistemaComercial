@@ -10,7 +10,7 @@ public class ProductoController extends SystemController{
 	
 	public void registrarProducto(Producto producto){
 		transaccion.begin();
-			em.persist(producto);
+			em.merge(producto);
 		transaccion.commit();
 	}
 	
