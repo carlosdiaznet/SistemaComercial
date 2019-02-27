@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
-
 import sv.gob.cnr.sistemacomercial.entities.Producto;
 import sv.gob.cnr.sistemacomercial.filter.ProductoFilter;
 
@@ -33,8 +32,11 @@ public class ProductoRepository implements Serializable {
 		} else {
 			return null;
 		}
-		
-		
+	}
+	
+	//Metodo para buscar por id dentro de la lista Resullist
+	public Producto byId(Long id){
+			return manager.find(Producto.class, id);
 	}
 	
 	public Producto porSku(String sku){
