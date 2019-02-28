@@ -85,6 +85,16 @@ public class RegistroProductoMB implements Serializable {
 		subCategoria = caterorias.subCategorias(categoria);
 	}
 	
+	public void productoID(Producto prd) throws Exception{
+		ProductoController var;
+		try {
+			var = new ProductoController();
+			this.producto = var.productoID(prd);
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
 	/*METODOS GET Y SET*/
 
 	public Producto getProducto() {

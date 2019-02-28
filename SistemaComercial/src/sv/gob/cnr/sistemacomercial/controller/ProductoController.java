@@ -14,5 +14,12 @@ public class ProductoController extends SystemController{
 		transaccion.commit();
 	}
 	
+	public Producto productoID(Producto producto) throws Exception {
+		transaccion.begin();
+			Producto prd = em.find(Producto.class, producto.getId());
+		transaccion.commit();
+		em.close();
+		return prd;
+	}
 
 }

@@ -65,7 +65,7 @@
 			<p:column style="width: 100px; text-align: center;">
 				<p:button outcome="/pages/productos/registroProductos.xhtml" icon="ui-icon-pencil" title="Editar">
 					<f:param name="producto" value="#{producto.id}" />
-					<f:converter converterId="productoConverter" />
+					
 				</p:button>
 				<p:commandButton icon="ui-icon-trash" title="Eliminar" oncomplete="PF('confirmacionEliminar').show();" />
 			</p:column>
