@@ -9,7 +9,7 @@
 	
 	<ui:define name="contenido">
 
-	<h:form>
+	<h:form id="frmBProductos">
 	<div class="contenedor-main">
 	<h1>Busqueda de Productos</h1>
 	<p:messages autoUpdate="true" closable="true" />
@@ -63,10 +63,8 @@
 				<h:outputText value="#{producto.inventario}" />
 			</p:column>
 			<p:column style="width: 100px; text-align: center;">
-				<p:button outcome="/pages/productos/registroProductos.xhtml" icon="ui-icon-pencil" title="Editar">
-					<f:param name="producto" value="#{producto.id}" />
-					
-				</p:button>
+				<p:commandButton actionListener="#{registroProductoMB.productoID(producto)}" 
+					oncomplete="PF('wdlgProducto').show();" update=":dlgProducto" value="Editar" />
 				<p:commandButton icon="ui-icon-trash" title="Eliminar" oncomplete="PF('confirmacionEliminar').show();" />
 			</p:column>
 	</p:dataTable>
@@ -78,6 +76,7 @@
 	</p:confirmDialog>
 	</div>
 	</h:form>
+	<ui:include src="/pages/productos/busquedaProductosaddedit.xhtml" />
 	</ui:define>
 
 </ui:composition>

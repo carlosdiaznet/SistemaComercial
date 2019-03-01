@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:body>
+	<p:dialog appendTo="@(body)" header="Editar productos" widgetVar="wdlgProducto" id="dlgProducto">
+		<p:panelGrid columns="2">
+			<p:outputLabel value="SKU:" />
+			<p:inputText value="#{registroProductoMB.producto.sku}" />
+			<p:outputLabel value="Nombre:" />
+			<p:inputText value="#{registroProductoMB.producto.nombre}" />
+			<p:outputLabel value="Inventario:" />
+			<p:inputText value="#{registroProductoMB.producto.inventario}" />
+			<p:outputLabel value="Valor unitario:" />
+			<p:inputText value="#{registroProductoMB.producto.valorUnitario}" />
+			<p:commandButton value="Editar" oncomplete="PF('wdlgProducto').hide();" update=":frmBProductos:productosTabla" />
+			<p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgProducto').hide();" />
+		</p:panelGrid>
+	</p:dialog>
+	<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+        			<p:commandButton value="Si" type="button" styleClass="ui-confirmdialog-yes" icon="ui-icon-check" />
+        			<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="ui-icon-close" />
+    		</p:confirmDialog>
+</h:body>
+
+</html>
