@@ -12,7 +12,7 @@
 	<ui:define name="contenido">
 	<div class="contenedor-main">
 	<f:metadata>
-		<o:viewParam name="producto" value="#{registroProductoMB.producto}" />
+		<f:viewParam name="producto" />
 		<f:event listener="#{registroProductoMB.inicializar('F')}" type="preRenderView" />
 	</f:metadata>
 	<h:form id="frmProducto">

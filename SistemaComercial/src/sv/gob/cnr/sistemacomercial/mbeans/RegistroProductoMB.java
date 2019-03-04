@@ -89,7 +89,7 @@ public class RegistroProductoMB implements Serializable {
 		ProductoController var;
 		try {
 			var = new ProductoController();
-			this.producto = var.productoID(prd);
+			producto = var.productoID(prd);
 		} catch (Exception e) {
 			throw e;
 		}

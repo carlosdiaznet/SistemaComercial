@@ -18,7 +18,6 @@ public class ProductoController extends SystemController{
 		transaccion.begin();
 			Producto prd = em.find(Producto.class, producto.getId());
 		transaccion.commit();
-		em.close();
 		return prd;
 	}
 

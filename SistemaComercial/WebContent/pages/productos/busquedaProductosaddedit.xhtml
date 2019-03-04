@@ -8,15 +8,15 @@
 
 <h:body>
 	<p:dialog appendTo="@(body)" header="Editar productos" widgetVar="wdlgProducto" id="dlgProducto">
-		<p:panelGrid columns="2">
+		<p:panelGrid columns="2" style="width: 500px;">
 			<p:outputLabel value="SKU:" />
-			<p:inputText value="#{registroProductoMB.producto.sku}" />
+			<p:inputText value="#{registroProductoMB.producto.sku}" size="17" />
 			<p:outputLabel value="Nombre:" />
-			<p:inputText value="#{registroProductoMB.producto.nombre}" />
+			<p:inputText value="#{registroProductoMB.producto.nombre}" size="50" />
 			<p:outputLabel value="Inventario:" />
-			<p:inputText value="#{registroProductoMB.producto.inventario}" />
+			<p:inputText value="#{registroProductoMB.producto.inventario}" size="10" />
 			<p:outputLabel value="Valor unitario:" />
-			<p:inputText value="#{registroProductoMB.producto.valorUnitario}" />
+			<p:inputText value="#{registroProductoMB.producto.valorUnitario}" size="10" />
 			<p:commandButton value="Editar" oncomplete="PF('wdlgProducto').hide();" update=":frmBProductos:productosTabla" />
 			<p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgProducto').hide();" />
 		</p:panelGrid>

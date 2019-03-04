@@ -54,15 +54,15 @@
 			<p:column filterBy="#{producto.categoria.nombre}" headerText="Categoria">
 				<h:outputText value="#{producto.categoria.nombre}" />
 			</p:column>
-			<p:column filterBy="#{producto.valorUnitario}" headerText="Valor unitario" style="text-align: right; width: 120px">
+			<p:column headerText="Valor unitario" style="text-align: right; width: 120px">
 				<h:outputText value="#{producto.valorUnitario}">
 					<f:convertNumber type="currency" currencySymbol="$" locale="en_US" />
 				</h:outputText>
 			</p:column>
-			<p:column filterBy="#{producto.inventario}" headerText="Inventario" style="text-align: center; width: 100px">
+			<p:column headerText="Inventario" style="text-align: center; width: 100px">
 				<h:outputText value="#{producto.inventario}" />
 			</p:column>
-			<p:column style="width: 100px; text-align: center;">
+			<p:column style="width: 125px; text-align: center;">
 				<p:commandButton actionListener="#{registroProductoMB.productoID(producto)}" 
 					oncomplete="PF('wdlgProducto').show();" update=":dlgProducto" value="Editar" />
 				<p:commandButton icon="ui-icon-trash" title="Eliminar" oncomplete="PF('confirmacionEliminar').show();" />
