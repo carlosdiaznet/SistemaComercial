@@ -103,6 +103,9 @@ public class RegistroProductoMB implements Serializable {
 
 	public void setProducto(Producto producto) {
 		this.producto = producto;
+		if(this.producto != null){
+			this.categoria = this.producto.getCategoria();
+		}
 	}
 	
 	public Categoria getCategoria() {

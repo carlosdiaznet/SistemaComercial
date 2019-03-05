@@ -7,6 +7,10 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 <h:body>
+	<f:metadata>
+		<f:viewParam name="producto" />
+		<f:event listener="#{registroProductoMB.inicializar('F')}" type="preRenderView" />
+	</f:metadata>
 	<p:dialog appendTo="@(body)" header="Editar productos" widgetVar="wdlgProducto" id="dlgProducto">
 		<p:panelGrid columns="2" style="width: 500px;">
 			<p:outputLabel value="SKU:" />
@@ -17,6 +21,16 @@
 			<p:inputText value="#{registroProductoMB.producto.inventario}" size="10" />
 			<p:outputLabel value="Valor unitario:" />
 			<p:inputText value="#{registroProductoMB.producto.valorUnitario}" size="10" />
+			
+			<p:outputLabel value="Categoria" for="categoria" />
+			<p:selectOneMenu id="categoria" value="#{registroProductoMB.categoria}" 
+				converter="categoryConverter">
+				
+				<f:selectItems value="#{registroProductoMB.listCategoria}" var="categoria"
+					itemValue="#{categoria}" itemLabel="#{categoria.nombre}" />
+				
+			</p:selectOneMenu>
+			
 			<p:commandButton value="Editar" oncomplete="PF('wdlgProducto').hide();" update=":frmBProductos:productosTabla" />
 			<p:commandButton value="Cancelar" immediate="true" oncomplete="PF('wdlgProducto').hide();" />
 		</p:panelGrid>
