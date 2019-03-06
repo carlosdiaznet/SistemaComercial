@@ -90,6 +90,7 @@ public class RegistroProductoMB implements Serializable {
 		try {
 			var = new ProductoController();
 			producto = var.productoID(prd);
+			this.categoria = producto.getCategoria();
 		} catch (Exception e) {
 			throw e;
 		}
@@ -103,9 +104,9 @@ public class RegistroProductoMB implements Serializable {
 
 	public void setProducto(Producto producto) {
 		this.producto = producto;
-		if(this.producto != null){
+		/*if(this.producto != null){
 			this.categoria = this.producto.getCategoria();
-		}
+		}*/
 	}
 	
 	public Categoria getCategoria() {
