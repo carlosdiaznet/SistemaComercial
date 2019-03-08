@@ -75,6 +75,17 @@ public class RegistroProductoMB implements Serializable {
 		}
 	}
 	
+	public void editar() throws Exception{
+		ProductoController reg;
+		try {
+			reg = new ProductoController();
+			reg.actualizarProducto(producto);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Registro actualizado"));
+		} catch (Exception e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_FATAL, "Aviso", "Error"));
+		}
+	}
+	
 	private void limpiar(){
 		producto = new Producto();
 		categoria = null;

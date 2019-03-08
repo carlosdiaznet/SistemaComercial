@@ -10,7 +10,7 @@ public class ProductoController extends SystemController{
 	
 	public void registrarProducto(Producto producto){
 		transaccion.begin();
-			em.merge(producto);
+			em.persist(producto);
 		transaccion.commit();
 	}
 	
@@ -19,6 +19,18 @@ public class ProductoController extends SystemController{
 			Producto prd = em.find(Producto.class, producto.getId());
 		transaccion.commit();
 		return prd;
+	}
+	
+	public void actualizarProducto(Producto producto) throws Exception {
+		try {
+			transaccion.begin();
+			em.merge(producto);
+			transaccion.commit();
+			System.out.println("actualizar producto" + producto.getNombre());
+		} catch (Exception e) {
+			throw e;
+		}
+		
 	}
 
 }
